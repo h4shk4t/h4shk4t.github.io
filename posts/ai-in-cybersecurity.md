@@ -13,7 +13,7 @@ In the ever-evolving landscape of digital security, the fusion of Artificial Int
 
 One of the most prominent applications of AI in cybersecurity is in threat detection. Machine learning algorithms can analyze vast amounts of data in real-time, identifying patterns and anomalies that might indicate a security breach. Unlike traditional rule-based systems, AI can adapt to new types of attacks, making it a formidable tool in the cybersecurity arsenal.
 
-```python
+\`\`\`python
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 
