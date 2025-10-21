@@ -1,12 +1,15 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
-import { Cpu, Shield, Terminal, Server, Code, ExternalLink } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { Cpu, Shield, Terminal, Server } from 'lucide-react'
 import { ParallaxSection } from '../components/parallax-section'
+import { PublicationsSection } from '../components/publications-section'
+import { SkillsSection } from '../components/skills-section'
+import { ContactSection } from '../components/contact-section'
 import Image from 'next/image'
 
-const TypewriterText = ({ text, delay = 100 }) => {
+const TypewriterText = ({ text, delay = 100 }: { text: string; delay?: number }) => {
   const [displayText, setDisplayText] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -23,7 +26,89 @@ const TypewriterText = ({ text, delay = 100 }) => {
   return <span className="typing-cursor">{displayText}</span>
 }
 
-const FadeInSection = ({ children, delay = 0 }) => {
+const GlitchText = () => {
+  const prefix = 'I am ';
+  const primaryName = 'hashkat.';
+  const secondaryName = 'Ashutosh.';
+  const fullPrimary = prefix + primaryName;
+
+  const [displayText, setDisplayText] = useState<string>('');
+  const [currentName, setCurrentName] = useState<string>(primaryName);
+  const [isGlitching, setIsGlitching] = useState<boolean>(false);
+  const [isTyping, setIsTyping] = useState<boolean>(true);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  const primaryRef = useRef<HTMLSpanElement>(null);
+  const secondaryRef = useRef<HTMLSpanElement>(null);
+  const [maxWidth, setMaxWidth] = useState(0);
+
+  useEffect(() => {
+    setMaxWidth(Math.max(
+      primaryRef.current?.offsetWidth || 0,
+      secondaryRef.current?.offsetWidth || 0
+    ));
+  }, []);
+
+  useEffect(() => {
+    if (isTyping && currentIndex < fullPrimary.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText(displayText + fullPrimary[currentIndex]);
+        setCurrentIndex(currentIndex + 1);
+      }, 100);
+      return () => clearTimeout(timeout);
+    } else if (isTyping) {
+      setIsTyping(false);
+    }
+  }, [currentIndex, isTyping, fullPrimary, displayText]);
+
+  useEffect(() => {
+    if (!isTyping) {
+      const startCycle = () => {
+        setTimeout(() => {
+          switchTo(secondaryName);
+          setTimeout(() => {
+            switchTo(primaryName);
+            startCycle();
+          }, 5000);
+        }, 5000);
+      };
+      startCycle();
+    }
+  }, [isTyping]);
+
+  const switchTo = (newName: string) => {
+    setIsGlitching(true);
+    setTimeout(() => {
+      setCurrentName(newName);
+    }, 500);
+    setTimeout(() => {
+      setIsGlitching(false);
+    }, 1000);
+  };
+
+  return (
+    <>
+      <span ref={primaryRef} className="invisible absolute font-bold text-4xl md:text-6xl">{primaryName}</span>
+      <span ref={secondaryRef} className="invisible absolute font-bold text-4xl md:text-6xl">{secondaryName}</span>
+      {isTyping ? (
+        <span className="typing-cursor">{displayText}</span>
+      ) : (
+        <span>
+          {prefix}
+          <span
+            style={{ width: maxWidth ? `${maxWidth}px` : 'auto' }}
+            className={`inline-block ${isGlitching ? 'glitch' : ''}`}
+            data-text={currentName}
+          >
+            {currentName}
+          </span>
+        </span>
+      )}
+    </>
+  );
+};
+
+const FadeInSection = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -35,7 +120,7 @@ const FadeInSection = ({ children, delay = 0 }) => {
   )
 }
 
-const ExperienceCard = ({ role, company, period, description, delay = 0 }) => (
+const ExperienceCard = ({ role, company, period, description, delay = 0 }: { role: string; company: string; period: string; description: string; delay?: number }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -58,27 +143,30 @@ const CodePreview = () => (
         <div className="h-3 w-3 rounded-full bg-yellow-500" />
         <div className="h-3 w-3 rounded-full bg-green-500" />
       </div>
-      <pre className="p-4 text-sm">
-        <code className="font-mono">
-          <span className="text-blue-400">function</span>{' '}
-          <span className="text-green-400">secureSystem</span>() {'{'}
-          <br />
-          {'  '}detectThreats();
-          <br />
-          {'  '}analyzeVulnerabilities();
-          <br />
-          {'  '}implementDefenses();
-          <br />
-          {'  '}<span className="text-blue-400">return</span>{' '}
-          <span className="text-yellow-400">"System Secured"</span>;
-          <br />
-          {'}'}</code>
-      </pre>
+      <div className="flex justify-center">
+        <pre className="p-4 text-sm font-mono leading-relaxed whitespace-pre text-left inline-block">
+          <code>
+            <span className='text-gray-400'>//</span> <span className='text-gray-400'>Here is my Resume, vibe code my entire personality: </span>{'\n'}
+            <span className="text-purple-400">class</span> <span className="text-green-400">Agent</span> {'{'}
+            {'\n'}  <span className="text-blue-400">skills</span> = [
+            {'\n'}    <span className="text-yellow-400">"AI Research"</span>,
+            {'\n'}    <span className="text-yellow-400">"Full-Stack Development"</span>,
+            {'\n'}    <span className="text-yellow-400">"CTFs"</span>,
+            {'\n'}    <span className="text-yellow-400">"DevOps Engineering"</span>
+            {'\n'}  ];
+            {'\n'}
+            {'\n'}  <span className="text-blue-400">execute</span>() {'{'}
+            {'\n'}    <span className="text-blue-400">return</span> <span className="text-green-400">this</span>.<span className="text-blue-400">skills</span>.<span className="text-purple-400">map</span>(skill =&gt; run(skill));
+            {'\n'}  {'}'} 
+            {'\n'}{'}'}
+          </code>
+        </pre>
+      </div>
     </div>
   </div>
 )
 
-const IllustrationCard = ({ src, alt }) => (
+const IllustrationCard = ({ src, alt }: { src: string; alt: string }) => (
   <div className="relative group">
     <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-green-500/10 rounded-lg blur-xl transition-all group-hover:blur-3xl" />
     <div className="relative rounded-lg overflow-hidden border border-gray-800 bg-black/50">
@@ -110,14 +198,39 @@ export default function Home() {
       <section className="h-screen flex flex-col items-center justify-center relative">
         <motion.div style={{ opacity: headerOpacity }} className="text-center space-y-6 z-10">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 glow-text">
-            <TypewriterText text="I am a developer." />
+            <GlitchText />
           </h1>
-          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
+          <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-4">
             <TypewriterText 
-              text="AI researcher. Cybersecurity enthusiast. CTF player. Infrastructure developer." 
+              text="Machine Learning Research Associate @ Adobe" 
               delay={50}
             />
           </p>
+          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto mb-8">
+            AI Research • Web Security • Infrastructure • Blockchain
+          </p>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
+          >
+            <a
+              href="#contact"
+              className="px-8 py-3 bg-green-400 text-black font-bold rounded-lg hover:bg-green-300 transition-all transform hover:scale-105"
+            >
+              Let's Connect
+            </a>
+            <a
+              href="/resume.pdf"
+              download
+              className="px-8 py-3 border border-green-400 text-green-400 font-bold rounded-lg hover:bg-green-400/10 transition-all"
+            >
+              Download Resume
+            </a>
+          </motion.div>
+          
           <CodePreview />
         </motion.div>
         <motion.div 
@@ -128,9 +241,14 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Publications Section - High Priority for Research Roles */}
+      <ParallaxSection offset={30}>
+        <PublicationsSection />
+      </ParallaxSection>
+
       {/* Experience Section */}
       <ParallaxSection>
-        <section className="min-h-screen bg-black/50 backdrop-blur-sm py-24 px-4">
+        <section className="min-h-screen bg-black/50 backdrop-blur-sm py-24 px-4" id="experience">
           <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -143,67 +261,86 @@ export default function Home() {
             
             <div className="grid gap-8 md:grid-cols-2">
               <ExperienceCard
-                role="Senior AI Engineer"
-                company="TechCorp AI"
-                period="2021 - Present"
-                description="Leading AI research initiatives and developing cutting-edge machine learning solutions for cybersecurity applications."
+                role="Machine Learning Research Associate"
+                company="Adobe"
+                period="Jul 2025 - Present"
+                description="Working on cutting-edge machine learning research and developing innovative AI solutions for creative applications."
                 delay={0.2}
               />
               <ExperienceCard
-                role="Security Researcher"
-                company="CyberGuard Solutions"
-                period="2019 - 2021"
-                description="Conducted vulnerability assessments and developed automated security testing frameworks."
+                role="Research Intern"
+                company="Trinity College Dublin"
+                period="Dec 2024 - Mar 2025"
+                description="Conducted research in machine learning and AI applications, contributing to academic publications and innovative projects."
                 delay={0.4}
               />
               <ExperienceCard
-                role="DevOps Engineer"
-                company="CloudScale Systems"
-                period="2018 - 2019"
-                description="Architected and maintained large-scale Kubernetes clusters and implemented CI/CD pipelines."
+                role="Infrastructure Engineer"
+                company="Abacus.AI"
+                period="Oct 2024 - Feb 2025"
+                description="Developed and maintained scalable infrastructure for AI/ML workloads, optimizing cloud systems and deployment pipelines."
                 delay={0.6}
               />
               <ExperienceCard
-                role="Software Developer"
-                company="InnovateTech"
-                period="2016 - 2018"
-                description="Developed full-stack applications and contributed to open-source projects."
+                role="Research Intern"
+                company="Adobe"
+                period="May 2024 - Jul 2024"
+                description="Conducted research in AI and machine learning, developing innovative solutions for digital content creation and processing."
                 delay={0.8}
+              />
+              <ExperienceCard
+                role="Team Captain"
+                company="InfoSecIITR"
+                period="Jun 2022 - May 2025"
+                description="Led cybersecurity initiatives and CTF competitions, mentoring team members and developing security tools and frameworks."
+                delay={1.0}
+              />
+              <ExperienceCard
+                role="Developer"
+                company="SDSLabs"
+                period="Apr 2022 - May 2025"
+                description="Contributed to open-source projects and developed innovative web applications, working on full-stack development and system design."
+                delay={1.2}
               />
             </div>
           </div>
         </section>
       </ParallaxSection>
 
-      {/* Expertise Section */}
+      {/* Expertise Section - Reorganized by Domains */}
       <ParallaxSection offset={-50}>
-        <section className="min-h-screen bg-black/50 backdrop-blur-sm py-24 px-4">
+        <section className="min-h-screen bg-black/50 backdrop-blur-sm py-24 px-4" id="expertise">
           <div className="max-w-6xl mx-auto">
             <FadeInSection>
-              <h2 className="text-3xl font-bold mb-12 gradient-text">~/expertise</h2>
+              <h2 className="text-3xl font-bold mb-3 gradient-text">~/expertise</h2>
+              <p className="text-gray-400 mb-12">Multi-domain technical expertise across cutting-edge technologies</p>
             </FadeInSection>
           
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {[
                 {
                   icon: <Cpu className="w-8 h-8" />,
-                  title: "AI Research",
-                  description: "Exploring the frontiers of artificial intelligence and machine learning."
+                  title: "AI Research & Machine Learning",
+                  description: "Building and researching advanced AI models and systems. Experience with LLMs, computer vision, and NLP. Publishing research in top-tier conferences.",
+                  tags: ["PyTorch", "TensorFlow", "Research"]
                 },
                 {
                   icon: <Shield className="w-8 h-8" />,
-                  title: "Cybersecurity",
-                  description: "Protecting digital assets and uncovering vulnerabilities in systems."
-                },
-                {
-                  icon: <Terminal className="w-8 h-8" />,
-                  title: "CTF Player",
-                  description: "Competing in Capture The Flag events, honing problem-solving skills."
+                  title: "Web Application Security",
+                  description: "Penetration testing, CTF competitions, and security research. Led InfoSecIITR as Team Captain, specializing in web vulnerabilities and exploit development.",
+                  tags: ["AppSec", "CTF", "Cryptography"]
                 },
                 {
                   icon: <Server className="w-8 h-8" />,
-                  title: "Infrastructure",
-                  description: "Building robust and scalable systems for modern applications."
+                  title: "Infrastructure & DevOps",
+                  description: "Architecting scalable ML infrastructure on Kubernetes. Cloud-native systems, CI/CD pipelines, and infrastructure-as-code for AI/ML workloads.",
+                  tags: ["Kubernetes", "AWS", "Terraform"]
+                },
+                {
+                  icon: <Terminal className="w-8 h-8" />,
+                  title: "Blockchain & Web3",
+                  description: "Smart contract development, consensus protocols, and blockchain security. Experience with decentralized systems and Web3 technologies.",
+                  tags: ["Solidity", "Web3", "DeFi"]
                 }
               ].map((item, index) => (
                 <FadeInSection key={index} delay={index * 0.2}>
@@ -211,7 +348,17 @@ export default function Home() {
                     <div className="p-8 h-full bg-black/50">
                       <div className="text-green-400 mb-4">{item.icon}</div>
                       <h3 className="text-xl font-bold mb-4">{item.title}</h3>
-                      <p className="text-gray-400">{item.description}</p>
+                      <p className="text-gray-400 mb-4">{item.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {item.tags.map((tag, tagIndex) => (
+                          <span 
+                            key={tagIndex}
+                            className="text-xs px-2 py-1 rounded-full border border-green-800 text-green-400"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </FadeInSection>
@@ -223,44 +370,56 @@ export default function Home() {
 
       {/* Projects Section */}
       <ParallaxSection offset={50}>
-        <section className="min-h-screen bg-black/50 backdrop-blur-sm py-24 px-4">
+        <section className="min-h-screen bg-black/50 backdrop-blur-sm py-24 px-4" id="projects">
           <div className="max-w-6xl mx-auto">
             <FadeInSection>
-              <h2 className="text-3xl font-bold mb-12 gradient-text">~/projects</h2>
+              <h2 className="text-3xl font-bold mb-3 gradient-text">~/projects</h2>
+              <p className="text-gray-400 mb-12">Open-source contributions and personal projects across multiple domains</p>
             </FadeInSection>
           
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
-                  title: "AI Threat Detection",
-                  description: "Machine learning-based system for detecting cyber threats in real-time.",
-                  tech: ["Python", "TensorFlow", "Docker"],
-                  image: "/threat-detection.svg"
+                  title: "Vector DB",
+                  description: "High-performance vector database for storing and querying embeddings. Built for ML applications with efficient similarity search.",
+                  tech: ["Rust", "Python", "RocksDB"],
+                  image: "/placeholder.jpg",
+                  github: "https://github.com/h4shk4t/vectordb",
+                  category: "AI/ML"
                 },
                 {
-                  title: "CTF Platform",
-                  description: "A modern platform for hosting Capture The Flag competitions.",
-                  tech: ["Next.js", "Node.js", "PostgreSQL"],
-                  image: "/ctf-platform.svg"
+                  title: "Katana",
+                  description: "Ready-to-deploy attack and defense CTF platform with automated infrastructure setup. Used in multiple cybersecurity competitions.",
+                  tech: ["Go", "Kubernetes", "MongoDB"],
+                  image: "/placeholder.jpg",
+                  github: "https://github.com/h4shk4t/katana",
+                  category: "Security"
                 },
                 {
-                  title: "K8s Optimizer",
-                  description: "Kubernetes cluster optimization tool using AI techniques.",
-                  tech: ["Go", "Kubernetes", "React"],
-                  image: "/k8s-optimizer.svg"
+                  title: "RusticOS",
+                  description: "Modular operating system kernel written completely in Rust. Features custom memory management and process scheduling.",
+                  tech: ["Rust", "x86-64", "QEMU"],
+                  image: "/placeholder.jpg",
+                  github: "https://github.com/h4shk4t/rustic-os",
+                  category: "Infrastructure"
                 }
               ].map((project, index) => (
                 <FadeInSection key={index} delay={index * 0.2}>
                   <div className="group h-full">
                     <div className="gradient-border h-full">
-                      <div className="p-8 space-y-4 bg-black/50 h-full">
+                      <div className="p-8 space-y-4 bg-black/50 h-full flex flex-col">
                         <IllustrationCard
                           src={project.image}
                           alt={project.title}
                         />
-                        <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                        <p className="text-gray-400 mb-4">{project.description}</p>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex items-center gap-2">
+                          <h3 className="text-xl font-bold">{project.title}</h3>
+                          <span className="text-xs px-2 py-1 rounded-full border border-purple-800 text-purple-400">
+                            {project.category}
+                          </span>
+                        </div>
+                        <p className="text-gray-400 flex-grow">{project.description}</p>
+                        <div className="flex flex-wrap gap-2 mb-4">
                           {project.tech.map((tech, techIndex) => (
                             <span 
                               key={techIndex}
@@ -270,14 +429,53 @@ export default function Home() {
                             </span>
                           ))}
                         </div>
+                        {project.github && (
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors text-sm mt-auto"
+                          >
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                              <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                            </svg>
+                            View on GitHub
+                          </a>
+                        )}
                       </div>
                     </div>
                   </div>
                 </FadeInSection>
               ))}
             </div>
+            
+            <FadeInSection delay={0.8}>
+              <div className="mt-12 text-center">
+                <a
+                  href="https://github.com/h4shk4t"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 border border-green-400 text-green-400 font-bold rounded-lg hover:bg-green-400/10 transition-all"
+                >
+                  View All Projects on GitHub
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
+              </div>
+            </FadeInSection>
           </div>
         </section>
+      </ParallaxSection>
+
+      {/* Skills Section */}
+      <ParallaxSection offset={-30}>
+        <SkillsSection />
+      </ParallaxSection>
+
+      {/* Contact Section */}
+      <ParallaxSection offset={20}>
+        <ContactSection />
       </ParallaxSection>
     </div>
   )

@@ -2,27 +2,47 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Blog',
+  description: 'Articles on AI, cybersecurity, CTFs, and infrastructure.',
+  alternates: { canonical: '/blog' },
+}
 
 export default function Blog() {
   const postsDirectory = path.join(process.cwd(), 'posts')
   const fileNames = fs.readdirSync(postsDirectory)
   
-  const posts = fileNames.map((fileName) => {
-    const slug = fileName.replace(/\.md$/, '')
-    const fullPath = path.join(postsDirectory, fileName)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-    const { data } = matter(fileContents)
-    
-    return {
-      slug,
-      ...data,
-    }
-  })
+  const posts = fileNames
+    .map((fileName) => {
+      const slug = fileName.replace(/\.md$/, '')
+      const fullPath = path.join(postsDirectory, fileName)
+      const fileContents = fs.readFileSync(fullPath, 'utf8')
+      const { data } = matter(fileContents)
+
+      return {
+        slug,
+        ...data,
+      } as {
+        slug: string
+        title?: string
+        excerpt?: string
+        date?: string
+        author?: string
+      }
+    })
+    .sort((a, b) => {
+      const timeA = a.date ? new Date(a.date).getTime() : 0
+      const timeB = b.date ? new Date(b.date).getTime() : 0
+      return timeB - timeA
+    })
 
   return (
-    <div className="min-h-screen bg-black py-24 px-4">
+    <div className="min-h-screen bg-black/50 backdrop-blur-sm py-24 px-4">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold mb-12 gradient-text">~/blog</h1>
+        <h1 className="text-3xl font-bold mb-3 gradient-text">~/blog</h1>
+        <p className="text-gray-400 mb-10">Perspectives on AI, security, and systems.</p>
         <div className="grid gap-6 md:grid-cols-2">
           {posts.map((post) => (
             <Link 
@@ -32,7 +52,9 @@ export default function Blog() {
             >
               <article>
                 <h2 className="text-xl font-bold mb-2 text-white">{post.title}</h2>
-                <p className="text-gray-400 mb-4">{post.excerpt}</p>
+                {post.excerpt ? (
+                  <p className="text-gray-400 mb-4">{post.excerpt}</p>
+                ) : null}
                 <div className="flex justify-between text-sm text-gray-500">
                   <span>{post.date}</span>
                   <span>{post.author}</span>

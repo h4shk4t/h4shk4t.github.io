@@ -1,7 +1,7 @@
 ---
 title: 'The Synergy of AI and Cybersecurity in Modern Defense Strategies'
 date: '2023-05-20'
-author: 'Tech Enthusiast'
+author: 'h4shk4t'
 excerpt: 'Exploring how artificial intelligence is revolutionizing cybersecurity defenses and threat detection.'
 ---
 

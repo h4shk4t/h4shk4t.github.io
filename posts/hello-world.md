@@ -1,8 +1,8 @@
 ---
 title: 'Hello, World!'
 date: '2023-05-20'
-author: 'John Doe'
-excerpt: 'This is my first blog post on my new portfolio website.'
+author: 'h4shk4t'
+excerpt: 'Welcome to my portfolio and blog - sharing insights on AI research, security, and infrastructure.'
 ---
 
 # Hello, World!
