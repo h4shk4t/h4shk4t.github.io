@@ -14,13 +14,13 @@ const contactLinks: ContactLink[] = [
   {
     name: 'Email',
     icon: <Mail className="w-5 h-5" />,
-    href: 'mailto:your.email@example.com',
+    href: 'mailto:ashutoshsr@adobe.com',
     description: 'Best for professional inquiries'
   },
   {
     name: 'LinkedIn',
     icon: <Linkedin className="w-5 h-5" />,
-    href: 'https://www.linkedin.com/in/h4shk4t',
+    href: 'https://www.linkedin.com/in/ashutosh-srivastava-1bbb0a223',
     description: 'Connect for opportunities'
   },
   {
@@ -32,7 +32,7 @@ const contactLinks: ContactLink[] = [
   {
     name: 'Google Scholar',
     icon: <GraduationCap className="w-5 h-5" />,
-    href: 'https://scholar.google.com',
+    href: 'https://scholar.google.com/citations?user=Oa5hGYgAAAAJ&hl=en',
     description: 'Research publications and citations'
   }
 ]
@@ -62,7 +62,7 @@ export function ContactSection() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
           >
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:ashutoshsr@adobe.com"
               className="px-8 py-3 bg-green-400 text-black font-bold rounded-lg hover:bg-green-300 transition-all transform hover:scale-105 flex items-center gap-2"
             >
               <Mail className="w-5 h-5" />
@@ -110,7 +110,7 @@ export function ContactSection() {
         </div>
 
         {/* Additional Info */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -123,7 +123,7 @@ export function ContactSection() {
               🟢 Open to opportunities in AI Research, Security, and Infrastructure
             </p>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   )

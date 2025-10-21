@@ -14,13 +14,13 @@ const skillCategories: SkillCategory[] = [
   {
     title: 'AI & Machine Learning',
     icon: <Cpu className="w-6 h-6" />,
-    skills: ['PyTorch', 'TensorFlow', 'Transformers', 'LLMs', 'Computer Vision', 'NLP', 'MLOps', 'CUDA'],
+    skills: ['PyTorch', 'Diffusion Models', 'Transformers', 'LLMs', 'Computer Vision', 'NLP', 'MLOps', 'Agentic AI'],
     color: 'purple'
   },
   {
     title: 'Security & CTF',
     icon: <Shield className="w-6 h-6" />,
-    skills: ['Web AppSec', 'Penetration Testing', 'CTF', 'OWASP', 'Cryptography', 'Binary Exploitation', 'Reverse Engineering'],
+    skills: ['Web AppSec', 'Penetration Testing', 'CTFs'],
     color: 'red'
   },
   {
@@ -32,14 +32,14 @@ const skillCategories: SkillCategory[] = [
   {
     title: 'Blockchain & Web3',
     icon: <Blocks className="w-6 h-6" />,
-    skills: ['Smart Contracts', 'Solidity', 'Web3.js', 'Consensus Protocols', 'DeFi', 'Security Auditing'],
+    skills: ['Smart Contracts', 'Solidity', 'zkVM', 'AVS'],
     color: 'green'
   }
 ]
 
 const languagesAndTools = [
-  'Python', 'Rust', 'Go', 'TypeScript', 'JavaScript', 'C/C++', 
-  'SQL', 'Git', 'Linux', 'Next.js', 'React', 'Node.js'
+  'Python', 'Rust', 'Go', 'C/C++', 
+  'SQL', 'Git', 'Linux'
 ]
 
 const colorMap: Record<string, { border: string; text: string; bg: string }> = {
@@ -114,6 +114,40 @@ export function SkillsSection() {
               </span>
             ))}
           </div>
+        </motion.div>
+
+        {/* Certifications */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="border border-gray-800 rounded-lg p-6 bg-gradient-to-br from-blue-500/5 to-purple-500/5"
+        >
+          <h3 className="text-lg font-bold text-white mb-4">Certifications</h3>
+          <a
+            href="https://www.credly.com/badges/61f8e0a5-af56-4033-a2b7-2ef1142209b0/linked_in_profile"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-4 p-4 border border-blue-700 rounded-lg hover:border-blue-600 transition-all bg-blue-500/10 group"
+          >
+            <div className="flex-shrink-0">
+              <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+                <svg className="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+              </div>
+            </div>
+            <div className="flex-1">
+              <div className="font-bold text-white group-hover:text-blue-300 transition-colors">
+                GIAC Foundational Cybersecurity Technologies (GFACT)
+              </div>
+              <div className="text-sm text-gray-400">Global Information Assurance Certification</div>
+            </div>
+            <svg className="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
         </motion.div>
       </div>
     </section>

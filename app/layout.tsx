@@ -144,8 +144,8 @@ export default function RootLayout({
                   ],
                   sameAs: [
                     'https://github.com/h4shk4t',
-                    'https://www.linkedin.com/in/h4shk4t',
-                    'https://scholar.google.com',
+                    'https://www.linkedin.com/in/ashutosh-srivastava-1bbb0a223',
+                    'https://scholar.google.com/citations?user=Oa5hGYgAAAAJ&hl=en',
                   ],
                 },
                 {
@@ -236,7 +236,7 @@ export default function RootLayout({
                     GitHub
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/h4shk4t"
+                    href="https://www.linkedin.com/in/ashutosh-srivastava-1bbb0a223"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors"
@@ -245,13 +245,22 @@ export default function RootLayout({
                     LinkedIn
                   </a>
                   <a
-                    href="https://scholar.google.com"
+                    href="https://scholar.google.com/citations?user=Oa5hGYgAAAAJ&hl=en"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors"
                     aria-label="Google Scholar profile"
                   >
                     Google Scholar
+                  </a>
+                  <a
+                    href="https://ctftime.org/team/16691"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-white transition-colors"
+                    aria-label="CTFtime team profile"
+                  >
+                    CTFtime
                   </a>
                   <a href="/rss.xml" className="text-gray-400 hover:text-white transition-colors">RSS Feed</a>
                 </div>

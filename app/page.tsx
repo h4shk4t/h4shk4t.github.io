@@ -120,7 +120,7 @@ const FadeInSection = ({ children, delay = 0 }: { children: React.ReactNode; del
   )
 }
 
-const ExperienceCard = ({ role, company, period, description, delay = 0 }: { role: string; company: string; period: string; description: string; delay?: number }) => (
+const ExperienceCard = ({ role, company, period, description, delay = 0 }: { role: string; company: string; period: string; description: React.ReactNode; delay?: number }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -264,14 +264,14 @@ export default function Home() {
                 role="Machine Learning Research Associate"
                 company="Adobe"
                 period="Jul 2025 - Present"
-                description="Working on cutting-edge machine learning research and developing innovative AI solutions for creative applications."
+                description="Working on personalization research and developing agentic AI solutions for digital media marketing and sales automation."
                 delay={0.2}
               />
               <ExperienceCard
                 role="Research Intern"
                 company="Trinity College Dublin"
                 period="Dec 2024 - Mar 2025"
-                description="Conducted research in machine learning and AI applications, contributing to academic publications and innovative projects."
+                description="Conducted research in machine learning and AI applications with the primary focus on interdisciplinary application of AI in Brain Tumor Detection"
                 delay={0.4}
               />
               <ExperienceCard
@@ -285,21 +285,45 @@ export default function Home() {
                 role="Research Intern"
                 company="Adobe"
                 period="May 2024 - Jul 2024"
-                description="Conducted research in AI and machine learning, developing innovative solutions for digital content creation and processing."
+                description="Conducted research in Diffusion based image editing. Developed a novel end-to-end framework for exemplar-based image editing - ReEdit."
                 delay={0.8}
               />
               <ExperienceCard
                 role="Team Captain"
                 company="InfoSecIITR"
                 period="Jun 2022 - May 2025"
-                description="Led cybersecurity initiatives and CTF competitions, mentoring team members and developing security tools and frameworks."
+                description={
+                  <>
+                    Led cybersecurity initiatives and CTF competitions (Rank #40 globally, #4 in India on CTFtime). Mentored team members and developed security tools and frameworks. Visit:{' '}
+                    <a 
+                      href="https://infoseciitr.in" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-green-400 hover:text-green-300 underline transition-colors"
+                    >
+                      infoseciitr.in
+                    </a>
+                  </>
+                }
                 delay={1.0}
               />
               <ExperienceCard
                 role="Developer"
                 company="SDSLabs"
                 period="Apr 2022 - May 2025"
-                description="Contributed to open-source projects and developed innovative web applications, working on full-stack development and system design."
+                description={
+                  <>
+                    Contributed to open-source projects at SDSLabs, IIT Roorkee. Developed VectorDB, Katana, RusticOS, and participated in multiple hackathons. Visit:{' '}
+                    <a 
+                      href="https://sdslabs.co" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-green-400 hover:text-green-300 underline transition-colors"
+                    >
+                      sdslabs.co
+                    </a>
+                  </>
+                }
                 delay={1.2}
               />
             </div>
@@ -321,14 +345,14 @@ export default function Home() {
                 {
                   icon: <Cpu className="w-8 h-8" />,
                   title: "AI Research & Machine Learning",
-                  description: "Building and researching advanced AI models and systems. Experience with LLMs, computer vision, and NLP. Publishing research in top-tier conferences.",
+                  description: "Building and researching advanced AI models and Agentic AI systems. Experience with LLMs, computer vision, and NLP. Publishing research in top-tier conferences.",
                   tags: ["PyTorch", "TensorFlow", "Research"]
                 },
                 {
                   icon: <Shield className="w-8 h-8" />,
                   title: "Web Application Security",
-                  description: "Penetration testing, CTF competitions, and security research. Led InfoSecIITR as Team Captain, specializing in web vulnerabilities and exploit development.",
-                  tags: ["AppSec", "CTF", "Cryptography"]
+                  description: "Web Security testing, CTF competitions, and security research. Led InfoSecIITR (Rank #40 globally on CTFtime) as Team Captain, specializing in web vulnerabilities and exploit development.",
+                  tags: ["AppSec", "CTF"]
                 },
                 {
                   icon: <Server className="w-8 h-8" />,
@@ -339,8 +363,8 @@ export default function Home() {
                 {
                   icon: <Terminal className="w-8 h-8" />,
                   title: "Blockchain & Web3",
-                  description: "Smart contract development, consensus protocols, and blockchain security. Experience with decentralized systems and Web3 technologies.",
-                  tags: ["Solidity", "Web3", "DeFi"]
+                  description: "Smart contract development, zkVM systems (RISC-0), and AVS (Actively Validated Services). Experience with EigenLayer, zero-knowledge proofs, and decentralized consensus protocols.",
+                  tags: ["Solidity", "zkVM", "AVS"]
                 }
               ].map((item, index) => (
                 <FadeInSection key={index} delay={index * 0.2}>
@@ -380,28 +404,45 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
-                  title: "Vector DB",
-                  description: "High-performance vector database for storing and querying embeddings. Built for ML applications with efficient similarity search.",
+                  title: "VectorDB",
+                  description: "VectorDB is a high-performance vector database for storing and querying embeddings. Built for ML applications with efficient similarity search and HNSW indexing.",
                   tech: ["Rust", "Python", "RocksDB"],
                   image: "/placeholder.jpg",
-                  github: "https://github.com/h4shk4t/vectordb",
+                  github: "https://github.com/sdslabs/vector-db",
                   category: "AI/ML"
                 },
                 {
-                  title: "Katana",
-                  description: "Ready-to-deploy attack and defense CTF platform with automated infrastructure setup. Used in multiple cybersecurity competitions.",
-                  tech: ["Go", "Kubernetes", "MongoDB"],
+                  title: "RusticOS",
+                  description: "Modular operating system kernel written completely in Rust. Features custom memory management, process scheduling, and x86-64 architecture support.",
+                  tech: ["Rust", "Assembly"],
                   image: "/placeholder.jpg",
-                  github: "https://github.com/h4shk4t/katana",
+                  github: "https://github.com/sdslabs/rusticos",
+                  category: "OS Development"
+                },
+                {
+                  title: "ValidAI",
+                  description: "Decentralized AI validation system leveraging Actively Validated Services (AVS). Implements custom consensus for ML model verification on-chain.",
+                  tech: ["Solidity", "EigenLayer", "AVS"],
+                  image: "/placeholder.jpg",
+                  github: "https://github.com/h4shk4t/validAI",
+                  category: "Blockchain",
+                  featured: true
+                },
+                {
+                  title: "Katana CTF Platform",
+                  description: "Production-ready attack and defense CTF platform with automated infrastructure setup.",
+                  tech: ["Go", "Kubernetes", "Docker"],
+                  image: "/placeholder.jpg",
+                  github: "https://github.com/sdslab/katana",
                   category: "Security"
                 },
                 {
-                  title: "RusticOS",
-                  description: "Modular operating system kernel written completely in Rust. Features custom memory management and process scheduling.",
-                  tech: ["Rust", "x86-64", "QEMU"],
+                  title: "Proof of Optima",
+                  description: "Zero-knowledge proof system for verifiable computation using zkVM and RISC-0. Demonstrates advanced cryptographic protocols for smart contracts.",
+                  tech: ["RISC-0", "zkVM", "Solidity"],
                   image: "/placeholder.jpg",
-                  github: "https://github.com/h4shk4t/rustic-os",
-                  category: "Infrastructure"
+                  github: "https://github.com/h4shk4t/proof-of-optima",
+                  category: "Blockchain"
                 }
               ].map((project, index) => (
                 <FadeInSection key={index} delay={index * 0.2}>
@@ -412,11 +453,16 @@ export default function Home() {
                           src={project.image}
                           alt={project.title}
                         />
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 flex-wrap">
                           <h3 className="text-xl font-bold">{project.title}</h3>
                           <span className="text-xs px-2 py-1 rounded-full border border-purple-800 text-purple-400">
                             {project.category}
                           </span>
+                          {project.featured && (
+                            <span className="text-xs px-2 py-1 rounded-full bg-yellow-500/20 border border-yellow-500 text-yellow-400">
+                              Featured
+                            </span>
+                          )}
                         </div>
                         <p className="text-gray-400 flex-grow">{project.description}</p>
                         <div className="flex flex-wrap gap-2 mb-4">
