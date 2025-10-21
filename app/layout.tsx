@@ -2,6 +2,7 @@ import './globals.css'
 import { JetBrains_Mono } from 'next/font/google'
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { MobileMenu } from '../components/mobile-menu'
 
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'] })
 
@@ -171,12 +172,13 @@ export default function RootLayout({
         </a>
         
         <header className="fixed w-full z-50 bg-black/80 backdrop-blur-sm border-b border-gray-800">
-          <nav className="container mx-auto px-4 py-4" aria-label="Primary navigation">
+          <nav className="container mx-auto px-4 py-3 md:py-4" aria-label="Primary navigation">
             <div className="flex justify-between items-center">
-              <Link href="/" className="text-xl font-bold gradient-text" aria-label="Home - Portfolio">
+              <Link href="/" className="text-lg md:text-xl font-bold gradient-text" aria-label="Home - Portfolio">
                 ~/portfolio
               </Link>
-              <div className="flex items-center gap-4 md:gap-6">
+              <div className="flex items-center gap-3 md:gap-6">
+                {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center gap-6">
                   <a href="#publications" className="text-gray-300 hover:text-white transition-colors text-sm">
                     publications
@@ -191,14 +193,19 @@ export default function RootLayout({
                     blog
                   </Link>
                 </div>
+                
+                {/* Desktop Resume Button */}
                 <a 
                   href="/resume.pdf" 
                   download
-                  className="px-4 py-2 bg-green-400 text-black text-sm font-bold rounded-lg hover:bg-green-300 transition-all"
+                  className="hidden md:inline-block px-4 py-2 bg-green-400 text-black text-sm font-bold rounded-lg hover:bg-green-300 transition-all"
                   aria-label="Download resume in PDF format"
                 >
                   Resume
                 </a>
+
+                {/* Mobile Menu */}
+                <MobileMenu />
               </div>
             </div>
           </nav>
@@ -207,10 +214,10 @@ export default function RootLayout({
           {children}
         </main>
         <footer className="border-t border-gray-800 bg-black/80" role="contentinfo">
-          <div className="container mx-auto px-4 py-10">
-            <div className="grid gap-8 md:grid-cols-3 mb-6">
-              <div>
-                <div className="text-xl font-bold gradient-text mb-2">~/portfolio</div>
+          <div className="container mx-auto px-4 py-8 md:py-10">
+            <div className="grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-6">
+              <div className="sm:col-span-2 lg:col-span-1">
+                <div className="text-lg md:text-xl font-bold gradient-text mb-2">~/portfolio</div>
                 <p className="text-gray-400 max-w-md text-sm">{siteDescription}</p>
               </div>
               <div>
@@ -266,7 +273,7 @@ export default function RootLayout({
                 </div>
               </div>
             </div>
-            <div className="border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
+            <div className="border-t border-gray-800 pt-6 text-center text-xs md:text-sm text-gray-500">
               <p>© {new Date().getFullYear()} All rights reserved. Built with Next.js</p>
             </div>
           </div>

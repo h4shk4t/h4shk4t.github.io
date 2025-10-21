@@ -125,38 +125,38 @@ const ExperienceCard = ({ role, company, period, description, delay = 0 }: { rol
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay }}
-    className="h-full border border-gray-800 rounded-lg p-8 hover:border-gray-700 transition-all hover:translate-y-[-5px] bg-black/50"
+    className="h-full border border-gray-800 rounded-lg p-5 sm:p-6 md:p-8 hover:border-gray-700 transition-all hover:translate-y-[-5px] bg-black/50"
   >
-    <h3 className="text-xl font-bold mb-1">{role}</h3>
-    <div className="text-green-400 mb-2">{company}</div>
-    <div className="text-gray-500 text-sm mb-4">{period}</div>
-    <p className="text-gray-400">{description}</p>
+    <h3 className="text-lg sm:text-xl font-bold mb-1">{role}</h3>
+    <div className="text-green-400 mb-2 text-sm sm:text-base">{company}</div>
+    <div className="text-gray-500 text-xs sm:text-sm mb-3 sm:mb-4">{period}</div>
+    <p className="text-gray-400 text-sm sm:text-base">{description}</p>
   </motion.div>
 )
 
 const CodePreview = () => (
-  <div className="relative w-full max-w-3xl mx-auto mt-8">
+  <div className="relative w-full max-w-3xl mx-auto mt-8 px-4 sm:px-0">
     <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-red-500/20 to-blue-500/20 blur-3xl" />
     <div className="relative overflow-hidden rounded-lg border border-gray-800 bg-black/80 backdrop-blur-sm">
-      <div className="flex items-center gap-2 border-b border-gray-800 px-4 py-2">
-        <div className="h-3 w-3 rounded-full bg-red-500" />
-        <div className="h-3 w-3 rounded-full bg-yellow-500" />
-        <div className="h-3 w-3 rounded-full bg-green-500" />
+      <div className="flex items-center gap-2 border-b border-gray-800 px-3 py-2 sm:px-4">
+        <div className="h-2 w-2 sm:h-3 sm:w-3 rounded-full bg-red-500" />
+        <div className="h-2 w-2 sm:h-3 sm:w-3 rounded-full bg-yellow-500" />
+        <div className="h-2 w-2 sm:h-3 sm:w-3 rounded-full bg-green-500" />
       </div>
-      <div className="flex justify-center">
-        <pre className="p-4 text-sm font-mono leading-relaxed whitespace-pre text-left inline-block">
+      <div className="overflow-x-auto">
+        <pre className="p-3 sm:p-4 text-xs sm:text-sm font-mono leading-relaxed whitespace-pre text-left inline-block min-w-full">
           <code>
-            <span className='text-gray-400'>//</span> <span className='text-gray-400'>Here is my Resume, vibe code my entire personality: </span>{'\n'}
+            <span className='text-gray-400'>//</span> <span className='text-gray-400'>Resume, vibe code: </span>{'\n'}
             <span className="text-purple-400">class</span> <span className="text-green-400">Agent</span> {'{'}
             {'\n'}  <span className="text-blue-400">skills</span> = [
             {'\n'}    <span className="text-yellow-400">"AI Research"</span>,
-            {'\n'}    <span className="text-yellow-400">"Full-Stack Development"</span>,
+            {'\n'}    <span className="text-yellow-400">"Full-Stack Dev"</span>,
             {'\n'}    <span className="text-yellow-400">"CTFs"</span>,
-            {'\n'}    <span className="text-yellow-400">"DevOps Engineering"</span>
+            {'\n'}    <span className="text-yellow-400">"DevOps"</span>
             {'\n'}  ];
             {'\n'}
             {'\n'}  <span className="text-blue-400">execute</span>() {'{'}
-            {'\n'}    <span className="text-blue-400">return</span> <span className="text-green-400">this</span>.<span className="text-blue-400">skills</span>.<span className="text-purple-400">map</span>(skill =&gt; run(skill));
+            {'\n'}    <span className="text-blue-400">return</span> <span className="text-green-400">this</span>.<span className="text-blue-400">skills</span>.<span className="text-purple-400">map</span>(s =&gt; run(s));
             {'\n'}  {'}'} 
             {'\n'}{'}'}
           </code>
@@ -195,18 +195,18 @@ export default function Home() {
         <div className="absolute inset-0 bg-grid-pattern" />
       </motion.div>
 
-      <section className="h-screen flex flex-col items-center justify-center relative">
-        <motion.div style={{ opacity: headerOpacity }} className="text-center space-y-6 z-10">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 glow-text">
+      <section className="min-h-screen flex flex-col items-center justify-center relative px-4 py-20 sm:py-0">
+        <motion.div style={{ opacity: headerOpacity }} className="text-center space-y-4 sm:space-y-6 z-10 w-full">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 glow-text">
             <GlitchText />
           </h1>
-          <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-4">
+          <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-3 sm:mb-4 px-4">
             <TypewriterText 
               text="Machine Learning Research Associate @ Adobe" 
               delay={50}
             />
           </p>
-          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto mb-8">
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
             AI Research • Web Security • Infrastructure • Blockchain
           </p>
           
@@ -214,18 +214,18 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-6 sm:mb-8 px-4"
           >
             <a
               href="#contact"
-              className="px-8 py-3 bg-green-400 text-black font-bold rounded-lg hover:bg-green-300 transition-all transform hover:scale-105"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-green-400 text-black font-bold rounded-lg hover:bg-green-300 transition-all transform hover:scale-105 text-center text-sm sm:text-base"
             >
               Let's Connect
             </a>
             <a
               href="/resume.pdf"
               download
-              className="px-8 py-3 border border-green-400 text-green-400 font-bold rounded-lg hover:bg-green-400/10 transition-all"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 border border-green-400 text-green-400 font-bold rounded-lg hover:bg-green-400/10 transition-all text-center text-sm sm:text-base"
             >
               Download Resume
             </a>
@@ -234,10 +234,10 @@ export default function Home() {
           <CodePreview />
         </motion.div>
         <motion.div 
-          className="absolute bottom-8 animate-bounce"
+          className="absolute bottom-4 sm:bottom-8 animate-bounce"
           style={{ opacity: headerOpacity }}
         >
-          <Terminal className="w-6 h-6 text-gray-400" />
+          <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400" />
         </motion.div>
       </section>
 
@@ -259,7 +259,7 @@ export default function Home() {
               <h2 className="text-3xl font-bold mb-12 gradient-text">~/experience</h2>
             </motion.div>
             
-            <div className="grid gap-8 md:grid-cols-2">
+            <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
               <ExperienceCard
                 role="Machine Learning Research Associate"
                 company="Adobe"
@@ -340,7 +340,7 @@ export default function Home() {
               <p className="text-gray-400 mb-12">Multi-domain technical expertise across cutting-edge technologies</p>
             </FadeInSection>
           
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
               {[
                 {
                   icon: <Cpu className="w-8 h-8" />,
@@ -401,7 +401,7 @@ export default function Home() {
               <p className="text-gray-400 mb-12">Open-source contributions and personal projects across multiple domains</p>
             </FadeInSection>
           
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {[
                 {
                   title: "VectorDB",
@@ -448,13 +448,13 @@ export default function Home() {
                 <FadeInSection key={index} delay={index * 0.2}>
                   <div className="group h-full">
                     <div className="gradient-border h-full">
-                      <div className="p-8 space-y-4 bg-black/50 h-full flex flex-col">
+                      <div className="p-5 sm:p-6 md:p-8 space-y-3 sm:space-y-4 bg-black/50 h-full flex flex-col">
                         <IllustrationCard
                           src={project.image}
                           alt={project.title}
                         />
                         <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="text-xl font-bold">{project.title}</h3>
+                          <h3 className="text-lg sm:text-xl font-bold">{project.title}</h3>
                           <span className="text-xs px-2 py-1 rounded-full border border-purple-800 text-purple-400">
                             {project.category}
                           </span>
@@ -464,7 +464,7 @@ export default function Home() {
                             </span>
                           )}
                         </div>
-                        <p className="text-gray-400 flex-grow">{project.description}</p>
+                        <p className="text-gray-400 text-sm sm:text-base flex-grow">{project.description}</p>
                         <div className="flex flex-wrap gap-2 mb-4">
                           {project.tech.map((tech, techIndex) => (
                             <span 

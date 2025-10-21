@@ -46,10 +46,10 @@ export function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-3xl font-bold mb-3 gradient-text">~/contact</h2>
-          <p className="text-gray-400 text-lg mb-6">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3 gradient-text">~/contact</h2>
+          <p className="text-gray-400 text-base sm:text-lg mb-4 sm:mb-6 px-4">
             Open to research collaborations, speaking opportunities, and exciting projects
           </p>
           
@@ -59,28 +59,28 @@ export function ContactSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-12 px-4"
           >
             <a
               href="mailto:ashutoshsr@adobe.com"
-              className="px-8 py-3 bg-green-400 text-black font-bold rounded-lg hover:bg-green-300 transition-all transform hover:scale-105 flex items-center gap-2"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-green-400 text-black font-bold rounded-lg hover:bg-green-300 transition-all transform hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base"
             >
-              <Mail className="w-5 h-5" />
+              <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
               Get in Touch
             </a>
             <a
               href="/resume.pdf"
               download
-              className="px-8 py-3 border border-green-400 text-green-400 font-bold rounded-lg hover:bg-green-400/10 transition-all flex items-center gap-2"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 border border-green-400 text-green-400 font-bold rounded-lg hover:bg-green-400/10 transition-all flex items-center justify-center gap-2 text-sm sm:text-base"
             >
-              <Calendar className="w-5 h-5" />
+              <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
               Download Resume
             </a>
           </motion.div>
         </motion.div>
 
         {/* Contact Links Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           {contactLinks.map((link, index) => (
             <motion.a
               key={index}
@@ -91,13 +91,13 @@ export function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group border border-gray-800 rounded-lg p-6 hover:border-gray-700 transition-all bg-black/50 hover:bg-black/70"
+              className="group border border-gray-800 rounded-lg p-4 sm:p-5 md:p-6 hover:border-gray-700 transition-all bg-black/50 hover:bg-black/70"
             >
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-3 sm:gap-4">
                 <div className="text-green-400 mt-1">{link.icon}</div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
-                    <h3 className="text-lg font-bold text-white">{link.name}</h3>
+                    <h3 className="text-base sm:text-lg font-bold text-white">{link.name}</h3>
                     {link.href.startsWith('http') && (
                       <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-green-400 transition-colors" />
                     )}

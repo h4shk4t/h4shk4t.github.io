@@ -59,12 +59,12 @@ export function SkillsSection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold mb-3 gradient-text">~/skills</h2>
-          <p className="text-gray-400 mb-12">Technical expertise across multiple domains</p>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3 gradient-text">~/skills</h2>
+          <p className="text-gray-400 mb-8 sm:mb-12 text-sm sm:text-base">Technical expertise across multiple domains</p>
         </motion.div>
 
         {/* Skill Categories */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12">
           {skillCategories.map((category, index) => {
             const colors = colorMap[category.color]
             return (
@@ -74,13 +74,13 @@ export function SkillsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className={`border ${colors.border} rounded-lg p-6 ${colors.bg} hover:border-opacity-100 transition-all`}
+                className={`border ${colors.border} rounded-lg p-4 sm:p-5 md:p-6 ${colors.bg} hover:border-opacity-100 transition-all`}
               >
-                <div className={`flex items-center gap-3 mb-4 ${colors.text}`}>
+                <div className={`flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 ${colors.text}`}>
                   {category.icon}
-                  <h3 className="text-xl font-bold text-white">{category.title}</h3>
+                  <h3 className="text-lg sm:text-xl font-bold text-white">{category.title}</h3>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {category.skills.map((skill, skillIndex) => (
                     <span
                       key={skillIndex}
@@ -101,10 +101,10 @@ export function SkillsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="border border-gray-800 rounded-lg p-6 bg-black/30"
+          className="border border-gray-800 rounded-lg p-4 sm:p-5 md:p-6 bg-black/30"
         >
-          <h3 className="text-lg font-bold text-white mb-4">Languages & Tools</h3>
-          <div className="flex flex-wrap gap-2">
+          <h3 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4">Languages & Tools</h3>
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {languagesAndTools.map((item, index) => (
               <span
                 key={index}
@@ -122,29 +122,29 @@ export function SkillsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="border border-gray-800 rounded-lg p-6 bg-gradient-to-br from-blue-500/5 to-purple-500/5"
+          className="border border-gray-800 rounded-lg p-4 sm:p-5 md:p-6 bg-gradient-to-br from-blue-500/5 to-purple-500/5"
         >
-          <h3 className="text-lg font-bold text-white mb-4">Certifications</h3>
+          <h3 className="text-base sm:text-lg font-bold text-white mb-3 sm:mb-4">Certifications</h3>
           <a
             href="https://www.credly.com/badges/61f8e0a5-af56-4033-a2b7-2ef1142209b0/linked_in_profile"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-4 p-4 border border-blue-700 rounded-lg hover:border-blue-600 transition-all bg-blue-500/10 group"
+            className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-blue-700 rounded-lg hover:border-blue-600 transition-all bg-blue-500/10 group"
           >
             <div className="flex-shrink-0">
-              <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
-                <svg className="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
               </div>
             </div>
-            <div className="flex-1">
-              <div className="font-bold text-white group-hover:text-blue-300 transition-colors">
+            <div className="flex-1 min-w-0">
+              <div className="font-bold text-white group-hover:text-blue-300 transition-colors text-sm sm:text-base">
                 GIAC Foundational Cybersecurity Technologies (GFACT)
               </div>
-              <div className="text-sm text-gray-400">Global Information Assurance Certification</div>
+              <div className="text-xs sm:text-sm text-gray-400">Global Information Assurance Certification</div>
             </div>
-            <svg className="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-blue-400 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
           </a>

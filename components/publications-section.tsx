@@ -85,17 +85,17 @@ const PublicationCard = ({ publication }: { publication: Publication }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="border border-gray-800 rounded-lg p-6 hover:border-gray-700 transition-all bg-black/50"
+      className="border border-gray-800 rounded-lg p-4 sm:p-5 md:p-6 hover:border-gray-700 transition-all bg-black/50"
     >
-      <div className="flex items-start gap-4">
+      <div className="flex items-start gap-3 sm:gap-4">
         <div className="hidden sm:block">
-          <BookOpen className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
+          <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-green-400 mt-1 flex-shrink-0" />
         </div>
         <div className="flex-1 min-w-0">
           {/* Venue Badge */}
           {publication.venueShort && (
-            <div className="flex items-center gap-2 mb-3">
-              <span className="inline-flex items-center gap-1 text-xs px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500 text-purple-300 font-semibold">
+            <div className="flex flex-wrap items-center gap-2 mb-3">
+              <span className="inline-flex items-center gap-1 text-xs px-2 sm:px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500 text-purple-300 font-semibold">
                 <Award className="w-3 h-3" />
                 {publication.venueShort}
               </span>
@@ -104,7 +104,7 @@ const PublicationCard = ({ publication }: { publication: Publication }) => {
           )}
           
           {/* Title */}
-          <h3 className="text-lg font-bold text-white mb-2 leading-tight">{publication.title}</h3>
+          <h3 className="text-base sm:text-lg font-bold text-white mb-2 leading-tight">{publication.title}</h3>
           
           {/* Authors */}
           <div className="text-gray-400 text-sm mb-2">
@@ -118,11 +118,11 @@ const PublicationCard = ({ publication }: { publication: Publication }) => {
           
           {/* Affiliations - Key Feature for Recruiters */}
           {publication.affiliations && publication.affiliations.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-3">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3">
               {publication.affiliations.map((affiliation, idx) => (
                 <span
                   key={idx}
-                  className="text-xs px-2 py-1 rounded-md bg-blue-500/10 border border-blue-800 text-blue-400"
+                  className="text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md bg-blue-500/10 border border-blue-800 text-blue-400"
                   title="Institution affiliation"
                 >
                   {affiliation}
@@ -170,7 +170,7 @@ const PublicationCard = ({ publication }: { publication: Publication }) => {
           )}
 
           {/* Links */}
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             {publication.projectPage && (
               <a
                 href={publication.projectPage}
@@ -223,17 +223,17 @@ export function PublicationsSection({ publications = defaultPublications }: Publ
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold mb-3 gradient-text">~/publications</h2>
-          <p className="text-gray-400 mb-2">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3 gradient-text">~/publications</h2>
+          <p className="text-gray-400 mb-2 text-sm sm:text-base">
             Research in AI/ML and computer vision with collaborators from top institutions
           </p>
-          <p className="text-gray-500 text-sm mb-8">
+          <p className="text-gray-500 text-xs sm:text-sm mb-6 sm:mb-8">
             {publications.length} {publications.length === 1 ? 'publication' : 'publications'} • Collaborations with Stanford, Adobe Research, Microsoft Research, CMU, and premier IITs
           </p>
         </motion.div>
 
         {/* Publications List */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {publications.map((publication, index) => (
             <PublicationCard key={index} publication={publication} />
           ))}
