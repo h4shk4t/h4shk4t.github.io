@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { Cpu, Shield, Terminal, Server, Trophy } from 'lucide-react'
 import { ParallaxSection } from '../components/parallax-section'
 import { PublicationsSection } from '../components/publications-section'
+import { AchievementsSection } from '../components/achievements-section'
 import { SkillsSection } from '../components/skills-section'
 import { ContactSection } from '../components/contact-section'
 import Image from 'next/image'
@@ -209,31 +210,6 @@ export default function Home() {
           <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
             AI Research • Web Security • Infrastructure • Blockchain
           </p>
-
-          {/* Achievement Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="flex justify-center mb-6 sm:mb-8 px-4"
-          >
-            <a
-              href="https://github.com/h4shk4t/csaw_esc_2022"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative inline-flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 border-2 border-yellow-500/50 rounded-lg bg-gradient-to-r from-yellow-500/10 via-amber-500/10 to-orange-500/10 hover:border-yellow-400 transition-all duration-300 hover:scale-105"
-            >
-              <Trophy className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 group-hover:rotate-12 transition-transform" />
-              <div className="flex flex-col items-start">
-                <span className="text-xs sm:text-sm font-bold text-yellow-400 group-hover:text-yellow-300 transition-colors">
-                  CSAW ESC 2022 Winner
-                </span>
-                <span className="text-[10px] sm:text-xs text-gray-400 group-hover:text-gray-300 transition-colors">
-                  Research Track • Adversarial ML Attacks
-                </span>
-              </div>
-            </a>
-          </motion.div>
           
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -269,6 +245,11 @@ export default function Home() {
       {/* Publications Section - High Priority for Research Roles */}
       <ParallaxSection offset={30}>
         <PublicationsSection />
+      </ParallaxSection>
+
+      {/* Achievements Section */}
+      <ParallaxSection offset={20}>
+        <AchievementsSection />
       </ParallaxSection>
 
       {/* Experience Section */}

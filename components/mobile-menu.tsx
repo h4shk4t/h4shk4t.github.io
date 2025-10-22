@@ -67,6 +67,13 @@ export function MobileMenu() {
                     Publications
                   </a>
                   <a
+                    href="#achievements"
+                    onClick={closeMenu}
+                    className="text-lg text-gray-300 hover:text-white transition-colors"
+                  >
+                    Achievements
+                  </a>
+                  <a
                     href="#experience"
                     onClick={closeMenu}
                     className="text-lg text-gray-300 hover:text-white transition-colors"

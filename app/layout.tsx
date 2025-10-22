@@ -183,6 +183,9 @@ export default function RootLayout({
                   <a href="#publications" className="text-gray-300 hover:text-white transition-colors text-sm">
                     publications
                   </a>
+                  <a href="#achievements" className="text-gray-300 hover:text-white transition-colors text-sm">
+                    achievements
+                  </a>
                   <a href="#experience" className="text-gray-300 hover:text-white transition-colors text-sm">
                     experience
                   </a>
@@ -224,6 +227,7 @@ export default function RootLayout({
                 <h3 className="text-white font-bold mb-3 text-sm">Quick Links</h3>
                 <div className="flex flex-col gap-2 text-sm">
                   <a href="#publications" className="text-gray-400 hover:text-white transition-colors">Publications</a>
+                  <a href="#achievements" className="text-gray-400 hover:text-white transition-colors">Achievements</a>
                   <a href="#experience" className="text-gray-400 hover:text-white transition-colors">Experience</a>
                   <a href="#skills" className="text-gray-400 hover:text-white transition-colors">Skills</a>
                   <a href="#projects" className="text-gray-400 hover:text-white transition-colors">Projects</a>
