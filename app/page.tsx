@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Cpu, Shield, Terminal, Server } from 'lucide-react'
+import { Cpu, Shield, Terminal, Server, Trophy } from 'lucide-react'
 import { ParallaxSection } from '../components/parallax-section'
 import { PublicationsSection } from '../components/publications-section'
 import { SkillsSection } from '../components/skills-section'
@@ -421,12 +421,13 @@ export default function Home() {
                 },
                 {
                   title: "ValidAI",
-                  description: "Decentralized AI validation system leveraging Actively Validated Services (AVS). Implements custom consensus for ML model verification on-chain.",
+                  description: "Decentralized AI validation system leveraging Actively Validated Services (AVS). Implements custom consensus for ML model verification on-chain. Winner of EigenLayer Infinite Prize.",
                   tech: ["Solidity", "EigenLayer", "AVS"],
                   image: "/placeholder.jpg",
                   github: "https://github.com/h4shk4t/validAI",
                   category: "Blockchain",
-                  featured: true
+                  featured: true,
+                  award: "EigenLayer Infinite Prize"
                 },
                 {
                   title: "Katana CTF Platform",
@@ -453,15 +454,23 @@ export default function Home() {
                           src={project.image}
                           alt={project.title}
                         />
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="text-lg sm:text-xl font-bold">{project.title}</h3>
-                          <span className="text-xs px-2 py-1 rounded-full border border-purple-800 text-purple-400">
-                            {project.category}
-                          </span>
-                          {project.featured && (
-                            <span className="text-xs px-2 py-1 rounded-full bg-yellow-500/20 border border-yellow-500 text-yellow-400">
-                              Featured
+                        <div className="flex flex-col gap-2">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <h3 className="text-lg sm:text-xl font-bold">{project.title}</h3>
+                            <span className="text-xs px-2 py-1 rounded-full border border-purple-800 text-purple-400">
+                              {project.category}
                             </span>
+                            {project.featured && (
+                              <span className="text-xs px-2 py-1 rounded-full bg-yellow-500/20 border border-yellow-500 text-yellow-400">
+                                Featured
+                              </span>
+                            )}
+                          </div>
+                          {project.award && (
+                            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-yellow-500/20 via-amber-500/20 to-orange-500/20 border border-yellow-500/50 w-fit">
+                              <Trophy className="w-3.5 h-3.5 text-yellow-400" />
+                              <span className="text-xs font-semibold text-yellow-300">{project.award}</span>
+                            </div>
                           )}
                         </div>
                         <p className="text-gray-400 text-sm sm:text-base flex-grow">{project.description}</p>
