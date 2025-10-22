@@ -12,7 +12,7 @@ ReEdit is an efficient end-to-end optimization-free framework for exemplar-based
 
 ## Overview
 
-![ReEdit Results](banner.jpg)
+![ReEdit Results](/banner.jpg)
 *Figure 1: ReEdit framework architecture showing the three main components: Image Space Edit Capture, Text Space Edit Capture, and Content Preservation for exemplar-based image editing.*
 
 
@@ -32,7 +32,7 @@ Given a pair of exemplar images (original and edited), ReEdit captures the edit 
 
 ## Method
 
-![ReEdit Framework Methodology](overview.jpg)
+![ReEdit Framework Methodology](/overview.jpg)
 *Figure 2: ReEdit framework architecture showing the three main components: Image Space Edit Capture, Text Space Edit Capture, and Content Preservation for exemplar-based image editing.*
 
 
