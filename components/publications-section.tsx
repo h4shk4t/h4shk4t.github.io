@@ -44,7 +44,7 @@ const defaultPublications: Publication[] = [
       'Stanford University',
       'Carnegie Mellon University'
     ],
-    link: 'https://reedit-diffusion.github.io/',
+    link: 'https://arxiv.org/pdf/2411.03982.pdf',
     projectPage: 'https://reedit-diffusion.github.io/',
     code: 'https://github.com/your-repo/reedit',
     abstract: 'Modern Text-to-Image (T2I) Diffusion models have revolutionized image editing by enabling the generation of high-quality photorealistic images. We propose ReEdit, a modular and efficient end-to-end framework that captures edits in both text and image modalities while ensuring the fidelity of the edited image.'
