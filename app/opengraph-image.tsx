@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
+export const dynamic = 'force-static'
 
 export const alt = 'Tech Portfolio — h4shk4t'
 export const size = { width: 1200, height: 630 }

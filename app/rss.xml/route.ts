@@ -3,6 +3,8 @@ import path from 'path'
 import matter from 'gray-matter'
 import { NextResponse } from 'next/server'
 
+export const dynamic = 'force-static'
+
 export async function GET() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://h4shk4t.github.io'
   const postsDirectory = path.join(process.cwd(), 'posts')
