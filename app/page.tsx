@@ -151,14 +151,14 @@ const CodePreview = () => (
             <span className="text-purple-400">class</span> <span className="text-green-400">Agent</span> {'{'}
             {'\n'}  <span className="text-blue-400">skills</span> = [
             {'\n'}    <span className="text-yellow-400">"AI Research"</span>,
-            {'\n'}    <span className="text-yellow-400">"Full-Stack Dev"</span>,
-            {'\n'}    <span className="text-yellow-400">"CTFs"</span>,
-            {'\n'}    <span className="text-yellow-400">"DevOps"</span>
+            {'\n'}    <span className="text-yellow-400">"Full-Stack Development"</span>,
+            {'\n'}    <span className="text-yellow-400">"Security"</span>,
+            {'\n'}    <span className="text-yellow-400">"DevOps & Infrastructure"</span>
             {'\n'}  ];
             {'\n'}
             {'\n'}  <span className="text-blue-400">execute</span>() {'{'}
             {'\n'}    <span className="text-blue-400">return</span> <span className="text-green-400">this</span>.<span className="text-blue-400">skills</span>.<span className="text-purple-400">map</span>(s =&gt; run(s));
-            {'\n'}  {'}'} 
+            {'\n'}  {'}'}
             {'\n'}{'}'}
           </code>
         </pre>
@@ -189,7 +189,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen gradient-bg">
-      <motion.div 
+      <motion.div
         className="fixed inset-0 pointer-events-none opacity-10"
         style={{ y: backgroundY }}
       >
@@ -202,16 +202,16 @@ export default function Home() {
             <GlitchText />
           </h1>
           <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-3 sm:mb-4 px-4">
-            <TypewriterText 
-              text="Machine Learning Research Associate @ Adobe" 
+            <TypewriterText
+              text="Applied Research Engineer @ Adobe"
               delay={50}
             />
           </p>
           <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
-            AI Research • Web Security • Infrastructure • Blockchain
+            Founding Engineer of Sales Qualifier (Adobe DX) • Web Security • AI Security • Infrastructure
           </p>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1 }}
@@ -231,10 +231,10 @@ export default function Home() {
               Download Resume
             </a>
           </motion.div>
-          
+
           <CodePreview />
         </motion.div>
-        <motion.div 
+        <motion.div
           className="absolute bottom-4 sm:bottom-8 animate-bounce"
           style={{ opacity: headerOpacity }}
         >
@@ -264,13 +264,35 @@ export default function Home() {
             >
               <h2 className="text-3xl font-bold mb-12 gradient-text">~/experience</h2>
             </motion.div>
-            
+
             <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
               <ExperienceCard
-                role="Machine Learning Research Associate"
+                role="Applied Research Engineer"
                 company="Adobe"
                 period="Jul 2025 - Present"
-                description="Working on personalization research and developing agentic AI solutions for digital media marketing and sales automation."
+                description={
+                  <>
+                    Working on the{' '}
+                    <a
+                      href="https://experienceleague.adobe.com/en/docs/journey-optimizer-b2b/user/ai-assistant/ai-agents/sales-qualifier"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-green-400 hover:text-green-300 underline transition-colors"
+                    >
+                      Sales Qualifier Agent (AJO B2B AO)
+                    </a>
+                    {' '}— an AI-driven application that automates B2B prospect qualification and outreach. Leading personalization research including{' '}
+                    <a
+                      href="https://behavior-in-the-wild.github.io/SDR-Bench.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-green-400 hover:text-green-300 underline transition-colors"
+                    >
+                      SDR-Bench
+                    </a>
+                    , the first benchmark for measuring personalization capabilities of Deep Research agents for B2B sales.
+                  </>
+                }
                 delay={0.2}
               />
               <ExperienceCard
@@ -301,18 +323,18 @@ export default function Home() {
                 description={
                   <>
                     Led cybersecurity initiatives and CTF competitions (Rank #40 globally, #4 in India on CTFtime). Won{' '}
-                    <a 
-                      href="https://github.com/h4shk4t/csaw_esc_2022" 
-                      target="_blank" 
+                    <a
+                      href="https://github.com/h4shk4t/csaw_esc_2022"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="text-yellow-400 hover:text-yellow-300 underline transition-colors font-semibold"
                     >
                       CSAW ESC 2022
                     </a>
                     {' '}in Research Track for adversarial attacks against ML models. Mentored team members and developed security tools and frameworks. Visit:{' '}
-                    <a 
-                      href="https://infoseciitr.in" 
-                      target="_blank" 
+                    <a
+                      href="https://infoseciitr.in"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="text-green-400 hover:text-green-300 underline transition-colors"
                     >
@@ -329,9 +351,9 @@ export default function Home() {
                 description={
                   <>
                     Contributed to open-source projects at SDSLabs, IIT Roorkee. Developed VectorDB, Katana, RusticOS, and participated in multiple hackathons. Visit:{' '}
-                    <a 
-                      href="https://sdslabs.co" 
-                      target="_blank" 
+                    <a
+                      href="https://sdslabs.co"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="text-green-400 hover:text-green-300 underline transition-colors"
                     >
@@ -354,13 +376,13 @@ export default function Home() {
               <h2 className="text-3xl font-bold mb-3 gradient-text">~/expertise</h2>
               <p className="text-gray-400 mb-12">Multi-domain technical expertise across cutting-edge technologies</p>
             </FadeInSection>
-          
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
               {[
                 {
                   icon: <Cpu className="w-8 h-8" />,
                   title: "AI Research & Machine Learning",
-                  description: "Building and researching advanced AI models and Agentic AI systems. Experience with LLMs, computer vision, and NLP. Publishing research in top-tier conferences.",
+                  description: "Building agentic AI systems for B2B sales automation and personalization at scale. Research on benchmarking LLM personalization capabilities. Experience with LLMs, computer vision, and NLP. Publishing research in top-tier conferences.",
                   tags: ["PyTorch", "TensorFlow", "Research"]
                 },
                 {
@@ -390,7 +412,7 @@ export default function Home() {
                       <p className="text-gray-400 mb-4">{item.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {item.tags.map((tag, tagIndex) => (
-                          <span 
+                          <span
                             key={tagIndex}
                             className="text-xs px-2 py-1 rounded-full border border-green-800 text-green-400"
                           >
@@ -415,9 +437,18 @@ export default function Home() {
               <h2 className="text-3xl font-bold mb-3 gradient-text">~/projects</h2>
               <p className="text-gray-400 mb-12">Open-source contributions and personal projects across multiple domains</p>
             </FadeInSection>
-          
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {[
+                {
+                  title: "SDR-Bench",
+                  description: "The first framework to systematically benchmark generative personalization capabilities of LLMs for B2B sales. Features a dual-layered dataset spanning 6,279 articles across 20+ industries.",
+                  tech: ["Python", "LLMs", "NLP"],
+                  image: "/placeholder.jpg",
+                  link: "https://behavior-in-the-wild.github.io/SDR-Bench.html",
+                  category: "AI/ML",
+                  featured: true
+                },
                 {
                   title: "VectorDB",
                   description: "VectorDB is a high-performance vector database for storing and querying embeddings. Built for ML applications with efficient similarity search and HNSW indexing.",
@@ -491,7 +522,7 @@ export default function Home() {
                         <p className="text-gray-400 text-sm sm:text-base flex-grow">{project.description}</p>
                         <div className="flex flex-wrap gap-2 mb-4">
                           {project.tech.map((tech, techIndex) => (
-                            <span 
+                            <span
                               key={techIndex}
                               className="text-xs px-2 py-1 rounded-full border border-green-800 text-green-400"
                             >
@@ -512,13 +543,26 @@ export default function Home() {
                             View on GitHub
                           </a>
                         )}
+                        {!project.github && project.link && (
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors text-sm mt-auto"
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                            View Project
+                          </a>
+                        )}
                       </div>
                     </div>
                   </div>
                 </FadeInSection>
               ))}
             </div>
-            
+
             <FadeInSection delay={0.8}>
               <div className="mt-12 text-center">
                 <a

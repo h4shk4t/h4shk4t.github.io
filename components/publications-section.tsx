@@ -23,6 +23,20 @@ interface PublicationsSectionProps {
 
 const defaultPublications: Publication[] = [
   {
+    title: 'SDR-Bench: Benchmarking the Personalization Capabilities of Large Language Models',
+    venue: 'Under Review',
+    venueShort: 'Under Review',
+    year: '2025',
+    authors: [
+      'Ashutosh Srivastava',
+    ],
+    affiliations: [
+      'Adobe',
+    ],
+    projectPage: 'https://behavior-in-the-wild.github.io/SDR-Bench.html',
+    abstract: 'We develop SDR-Arena — the first framework for scalable automated personalization benchmarking. We adapt the Bayesian Persuasion model to formally define personalization and benchmark frontier LLMs\' ability to generate personalized value propositions for B2B sales prospects. We curate a dual-layered dataset consisting of proprietary outreach emails sent by real sales people and public scale data comprising of 6,279 articles spanning over 20 industries.'
+  },
+  {
     title: 'ReEdit: Multimodal Exemplar-Based Image Editing with Diffusion Models',
     venue: 'Winter Conference on Applications of Computer Vision (WACV) & ECCV 2024 Workshop (AI4VA)',
     venueShort: 'WACV 2025',
@@ -228,7 +242,7 @@ export function PublicationsSection({ publications = defaultPublications }: Publ
             Research in AI/ML and computer vision with collaborators from top institutions
           </p>
           <p className="text-gray-500 text-xs sm:text-sm mb-6 sm:mb-8">
-            {publications.length} {publications.length === 1 ? 'publication' : 'publications'} • Collaborations with Stanford, Adobe Research, Microsoft Research, CMU, and premier IITs
+            {publications.length} {publications.length === 1 ? 'publication' : 'publications'} • Collaborations with Adobe Research, Stanford, Microsoft Research, CMU, and premier IITs
           </p>
         </motion.div>
 
