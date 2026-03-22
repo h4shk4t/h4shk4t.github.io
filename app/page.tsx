@@ -147,19 +147,13 @@ const CodePreview = () => (
       <div className="overflow-x-auto">
         <pre className="p-3 sm:p-4 text-xs sm:text-sm font-mono leading-relaxed whitespace-pre text-left inline-block min-w-full">
           <code>
-            <span className='text-gray-400'>//</span> <span className='text-gray-400'>Resume, vibe code: </span>{'\n'}
-            <span className="text-purple-400">class</span> <span className="text-green-400">Agent</span> {'{'}
-            {'\n'}  <span className="text-blue-400">skills</span> = [
-            {'\n'}    <span className="text-yellow-400">"AI Research"</span>,
-            {'\n'}    <span className="text-yellow-400">"Full-Stack Development"</span>,
-            {'\n'}    <span className="text-yellow-400">"Security"</span>,
-            {'\n'}    <span className="text-yellow-400">"DevOps & Infrastructure"</span>
-            {'\n'}  ];
-            {'\n'}
-            {'\n'}  <span className="text-blue-400">execute</span>() {'{'}
-            {'\n'}    <span className="text-blue-400">return</span> <span className="text-green-400">this</span>.<span className="text-blue-400">skills</span>.<span className="text-purple-400">map</span>(s =&gt; run(s));
-            {'\n'}  {'}'}
-            {'\n'}{'}'}
+            <span className="text-gray-400">{'// What I work on:'}</span>{'\n'}
+            <span className="text-purple-400">const</span> <span className="text-blue-400">research</span> = {'{'}{'\n'}
+            {'  '}<span className="text-green-400">primary</span>:  [<span className="text-yellow-400">"LLM evals"</span>, <span className="text-yellow-400">"agent benchmarking"</span>, <span className="text-yellow-400">"process rewards"</span>],{'\n'}
+            {'  '}<span className="text-green-400">security</span>: [<span className="text-yellow-400">"adversarial ML"</span>, <span className="text-yellow-400">"CTF"</span>, <span className="text-yellow-400">"systems security"</span>],{'\n'}
+            {'  '}<span className="text-green-400">systems</span>:  [<span className="text-yellow-400">"Rust"</span>, <span className="text-yellow-400">"OS internals"</span>, <span className="text-yellow-400">"infra at scale"</span>],{'\n'}
+            {'  '}<span className="text-green-400">thesis</span>:   <span className="text-yellow-400">"measure what agents can't do yet"</span>{'\n'}
+            {'}'};
           </code>
         </pre>
       </div>
@@ -208,7 +202,11 @@ export default function Home() {
             />
           </p>
           <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
-            Founding Engineer of Sales Qualifier (Adobe DX) • Web Security • AI Security • Infrastructure
+            Research Engineer @ Adobe · LLM Agent Evals & Benchmarking · AI Security
+          </p>
+
+          <p className="text-gray-500 text-xs sm:text-sm max-w-xl mx-auto mb-6 sm:mb-8 px-4 text-center leading-relaxed">
+            SDR-Bench · CSAW ESC &apos;22 winner · WACV &amp; ECCV · Rust systems · IIT Roorkee
           </p>
 
           <motion.div
@@ -381,14 +379,14 @@ export default function Home() {
               {[
                 {
                   icon: <Cpu className="w-8 h-8" />,
-                  title: "AI Research & Machine Learning",
-                  description: "Building agentic AI systems for B2B sales automation and personalization at scale. Research on benchmarking LLM personalization capabilities. Experience with LLMs, computer vision, and NLP. Publishing research in top-tier conferences.",
+                  title: "AI Research & Evaluation",
+                  description: "Building and evaluating agentic AI systems. Research on LLM benchmarking, process rewards, and long-horizon agent reasoning. Published at WACV and ECCV.",
                   tags: ["PyTorch", "TensorFlow", "Research"]
                 },
                 {
                   icon: <Shield className="w-8 h-8" />,
-                  title: "Web Application Security",
-                  description: "Web Security testing, CTF competitions, and security research. Led InfoSecIITR (Rank #40 globally on CTFtime) as Team Captain, specializing in web vulnerabilities and exploit development.",
+                  title: "AI & Systems Security",
+                  description: "Adversarial ML research, CTF competitions, and security engineering. CSAW ESC winner. Led InfoSecIITR to rank #40 globally on CTFtime.",
                   tags: ["AppSec", "CTF"]
                 },
                 {
@@ -399,7 +397,7 @@ export default function Home() {
                 },
                 {
                   icon: <Terminal className="w-8 h-8" />,
-                  title: "Blockchain & Web3",
+                  title: "Blockchain (side projects)",
                   description: "Smart contract development, zkVM systems (RISC-0), and AVS (Actively Validated Services). Experience with EigenLayer, zero-knowledge proofs, and decentralized consensus protocols.",
                   tags: ["Solidity", "zkVM", "AVS"]
                 }
@@ -450,20 +448,28 @@ export default function Home() {
                   featured: true
                 },
                 {
+                  title: "RusticOS",
+                  description: "Modular operating system kernel written completely in Rust. Features custom memory management, process scheduling, and x86-64 architecture support.",
+                  tech: ["Rust", "OS", "Systems"],
+                  image: "/placeholder.jpg",
+                  github: "https://github.com/sdslabs/rusticos",
+                  category: "OS Development"
+                },
+                {
                   title: "VectorDB",
                   description: "VectorDB is a high-performance vector database for storing and querying embeddings. Built for ML applications with efficient similarity search and HNSW indexing.",
-                  tech: ["Rust", "Python", "RocksDB"],
+                  tech: ["Rust", "ML Infra"],
                   image: "/placeholder.jpg",
                   github: "https://github.com/sdslabs/vector-db",
                   category: "AI/ML"
                 },
                 {
-                  title: "RusticOS",
-                  description: "Modular operating system kernel written completely in Rust. Features custom memory management, process scheduling, and x86-64 architecture support.",
-                  tech: ["Rust", "Assembly"],
+                  title: "Katana CTF Platform",
+                  description: "Production-ready attack and defense CTF platform with automated infrastructure setup.",
+                  tech: ["Go", "Kubernetes", "Docker"],
                   image: "/placeholder.jpg",
-                  github: "https://github.com/sdslabs/rusticos",
-                  category: "OS Development"
+                  github: "https://github.com/sdslab/katana",
+                  category: "Security"
                 },
                 {
                   title: "ValidAI",
@@ -474,14 +480,6 @@ export default function Home() {
                   category: "Blockchain",
                   featured: true,
                   award: "EigenLayer Infinite Prize"
-                },
-                {
-                  title: "Katana CTF Platform",
-                  description: "Production-ready attack and defense CTF platform with automated infrastructure setup.",
-                  tech: ["Go", "Kubernetes", "Docker"],
-                  image: "/placeholder.jpg",
-                  github: "https://github.com/sdslab/katana",
-                  category: "Security"
                 },
                 {
                   title: "Proof of Optima",

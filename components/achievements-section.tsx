@@ -15,9 +15,9 @@ interface Achievement {
 
 const achievements: Achievement[] = [
   {
-    title: 'CSAW ESC 2022 Winner',
-    subtitle: 'Research Track',
-    description: 'Won the Embedded Security Challenge in Research Track for adversarial attacks against machine learning models. CSAW ESC is the world\'s oldest hardware security competition.',
+    title: 'CSAW ESC 2022 — 1st Place, Research Track',
+    subtitle: 'World\'s oldest hardware security competition · Adversarial attacks on ML models',
+    description: 'Won the Embedded Security Challenge research track for work on adversarial attacks against machine learning models — before AI security became a mainstream research area. CSAW ESC is run by NYU and is the world\'s oldest hardware security competition.',
     icon: <Trophy className="w-6 h-6 sm:w-8 sm:h-8" />,
     link: 'https://github.com/h4shk4t/csaw_esc_2022',
     year: '2022',

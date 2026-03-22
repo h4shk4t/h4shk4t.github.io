@@ -30,8 +30,10 @@ export default function Blog() {
         excerpt?: string
         date?: string
         author?: string
+        draft?: boolean
       }
     })
+    .filter((post) => !post.draft)
     .sort((a, b) => {
       const timeA = a.date ? new Date(a.date).getTime() : 0
       const timeB = b.date ? new Date(b.date).getTime() : 0

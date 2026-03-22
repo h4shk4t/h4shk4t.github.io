@@ -8,8 +8,8 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'] })
 
 // Site URL can be overridden via NEXT_PUBLIC_SITE_URL env var
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://h4shk4t.github.io'
-const siteName = 'h4shk4t — AI Research @ Adobe | Security | Infrastructure | Blockchain'
-const siteDescription = 'AI Research Associate at Adobe. Publications in machine learning, expertise in web security, infrastructure engineering, and blockchain. Open for research collaborations and exciting opportunities.'
+const siteName = 'Ashutosh Srivastava — LLM Evals & AI Security Research'
+const siteDescription = 'Research engineer at Adobe working on LLM agent evaluation, benchmarking, and AI security. Published at WACV and ECCV. CSAW ESC Winner.'
 const defaultOgImage = '/placeholder.jpg'
 
 export const metadata: Metadata = {
@@ -128,7 +128,7 @@ export default function RootLayout({
                   name: 'h4shk4t',
                   alternateName: 'Ashutosh',
                   url: siteUrl,
-                  jobTitle: 'Machine Learning Research Associate',
+                  jobTitle: 'Research Engineer',
                   worksFor: {
                     '@type': 'Organization',
                     name: 'Adobe'

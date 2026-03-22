@@ -9,10 +9,17 @@ import type { Metadata } from 'next'
 export async function generateStaticParams() {
   const postsDirectory = path.join(process.cwd(), 'posts')
   const fileNames = fs.readdirSync(postsDirectory)
-  
-  return fileNames.map((fileName) => ({
-    slug: fileName.replace(/\.md$/, ''),
-  }))
+
+  return fileNames
+    .filter((fileName) => {
+      const fullPath = path.join(postsDirectory, fileName)
+      const fileContents = fs.readFileSync(fullPath, 'utf8')
+      const { data } = matter(fileContents)
+      return !data.draft
+    })
+    .map((fileName) => ({
+      slug: fileName.replace(/\.md$/, ''),
+    }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
