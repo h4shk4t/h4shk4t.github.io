@@ -23,18 +23,43 @@ interface PublicationsSectionProps {
 
 const defaultPublications: Publication[] = [
   {
-    title: 'SDR-Bench: Benchmarking the Personalization Capabilities of Large Language Models',
+    title: 'MEMENTO: Leveraging Web as a Learning Signal for Low-Data Domains',
     venue: 'Under Review',
     venueShort: 'Under Review',
-    year: '2025',
+    year: '2026',
     authors: [
+      'Ashutosh Ojha',
+      'Vinay Aggarwal',
       'Ashutosh Srivastava',
+      'Siddharth Yedlapati',
+      'Yaman K Singla',
+      'Jitendra Ajmera'
     ],
     affiliations: [
       'Adobe',
     ],
+    link: 'https://arxiv.org/abs/2605.29795',
+    projectPage: 'https://behavior-in-the-wild.github.io/memento.html',
+    abstract: 'Real-world tasks often lack large labeled datasets, motivating extensive work on learning in low-data regimes. However, existing approaches such as few-shot prompting, instruction tuning, and synthetic data generation, continue to treat labeled or pseudo-labeled data as the primary learning signal. In contrast, human practitioners acquire expertise through repeated, self-directed interaction with the open web, progressively refining both domain knowledge and search strategies. We propose MEMENTO, a framework that treats the web as a learning signal rather than a stateless retrieval interface. MEMENTO operates at two levels: within each session, it conducts iterative web exploration via an Adaptive Exploration Tree (AET) that decomposes tasks into evolving questions and reflects on intermediate findings; across sessions, it accumulates experience through dual-channel memory, separating declarative knowledge (facts) from procedural knowledge (search strategies). This design enables agents to learn reusable research strategies and domain expertise from trajectories of web interaction without additional model training. We evaluate MEMENTO on two low-data professional domains: sales automation and legal research. Our empirical results show consistent improvements in performance over ReAct-based baselines (+25.6% on sales automation and +36.5% on legal research), demonstrating that the web can serve as a scalable learning source for acquiring task-specific expertise in data-scarce settings.'
+  },
+  {
+    title: 'SDR-Bench: Benchmarking the Personalization Capabilities of Large Language Models',
+    venue: 'Under Review',
+    venueShort: 'Under Review',
+    year: '2026',
+    authors: [
+      'Ashutosh Srivastava',
+      'Siddharth Yedlapati',
+      'Vinay Aggarwal',
+      'Shashwat Dixit',
+      'Yaman Kumar Singla'
+    ],
+    affiliations: [
+      'Adobe',
+    ],
+    link: 'https://behavior-in-the-wild.github.io/Benchmarking_the_Personalization_Capabilities_of_Large_Language_Models%20Preprint.pdf',
     projectPage: 'https://behavior-in-the-wild.github.io/SDR-Bench.html',
-    abstract: 'We develop SDR-Arena — the first framework for scalable automated personalization benchmarking. We adapt the Bayesian Persuasion model to formally define personalization and benchmark frontier LLMs\' ability to generate personalized value propositions for B2B sales prospects. We curate a dual-layered dataset consisting of proprietary outreach emails sent by real sales people and public scale data comprising of 6,279 articles spanning over 20 industries.'
+    abstract: 'We develop SDR-Arena — the first framework for scalable automated personalization benchmarking grounded in Bayesian Persuasion theory. We benchmark frontier LLMs\' ability to generate personalized value propositions for B2B sales prospects using a dual-layered dataset of 6,279 articles spanning 20+ industries.'
   },
   {
     title: 'ReEdit: Multimodal Exemplar-Based Image Editing with Diffusion Models',
@@ -61,7 +86,7 @@ const defaultPublications: Publication[] = [
     link: 'https://arxiv.org/pdf/2411.03982.pdf',
     projectPage: 'https://reedit-diffusion.github.io/',
     code: 'https://github.com/your-repo/reedit',
-    abstract: 'Modern Text-to-Image (T2I) Diffusion models have revolutionized image editing by enabling the generation of high-quality photorealistic images. We propose ReEdit, a modular and efficient end-to-end framework that captures edits in both text and image modalities while ensuring the fidelity of the edited image.'
+    abstract: 'We propose ReEdit, a modular and efficient end-to-end framework for exemplar-based image editing using diffusion models. ReEdit captures edits in both text and image modalities while ensuring fidelity of the edited image.'
   },
   {
     title: 'Towards Efficient Exemplar Based Image Editing with Multimodal VLMs',
@@ -86,7 +111,7 @@ const defaultPublications: Publication[] = [
       'Carnegie Mellon University'
     ],
     link: 'https://arxiv.org/abs/2506.20155',
-    abstract: 'Text-to-Image Diffusion models have enabled a wide array of image editing applications. However, capturing all types of edits through text alone can be challenging and cumbersome. We tackle exemplar-based image editing by leveraging pretrained text-to-image diffusion models and multimodal VLMs. Our optimization-free end-to-end pipeline outperforms baselines on multiple types of edits while being ~4x faster.'
+    abstract: 'We tackle exemplar-based image editing by leveraging pretrained text-to-image diffusion models and multimodal VLMs. Our optimization-free end-to-end pipeline outperforms baselines on multiple types of edits while being ~4x faster.'
   }
 ]
 
@@ -229,7 +254,7 @@ const PublicationCard = ({ publication }: { publication: Publication }) => {
 
 export function PublicationsSection({ publications = defaultPublications }: PublicationsSectionProps) {
   return (
-    <section className="min-h-screen bg-black/50 backdrop-blur-sm py-24 px-4" id="publications">
+    <section className="bg-black/50 backdrop-blur-sm py-16 sm:py-24 px-4" id="publications">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -242,7 +267,7 @@ export function PublicationsSection({ publications = defaultPublications }: Publ
             Research in AI/ML and computer vision with collaborators from top institutions
           </p>
           <p className="text-gray-500 text-xs sm:text-sm mb-6 sm:mb-8">
-            {publications.length} {publications.length === 1 ? 'publication' : 'publications'} • Collaborations with Adobe Research, Stanford, Microsoft Research, CMU, and premier IITs
+            {publications.length} {publications.length === 1 ? 'publication' : 'publications'} across WACV, ECCV, and BiTW • Collaborations with Adobe Research, Stanford, Microsoft Research, CMU, and premier IITs
           </p>
         </motion.div>
 

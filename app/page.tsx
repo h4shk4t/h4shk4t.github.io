@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Cpu, Shield, Terminal, Server, Trophy } from 'lucide-react'
+import { Cpu, Shield, Terminal, Server, Trophy, Brain, Workflow } from 'lucide-react'
 import { ParallaxSection } from '../components/parallax-section'
 import { PublicationsSection } from '../components/publications-section'
 import { AchievementsSection } from '../components/achievements-section'
@@ -149,9 +149,10 @@ const CodePreview = () => (
           <code>
             <span className="text-gray-400">{'// What I work on:'}</span>{'\n'}
             <span className="text-purple-400">const</span> <span className="text-blue-400">research</span> = {'{'}{'\n'}
-            {'  '}<span className="text-green-400">primary</span>:  [<span className="text-yellow-400">"LLM evals"</span>, <span className="text-yellow-400">"agent benchmarking"</span>, <span className="text-yellow-400">"process rewards"</span>],{'\n'}
-            {'  '}<span className="text-green-400">security</span>: [<span className="text-yellow-400">"adversarial ML"</span>, <span className="text-yellow-400">"CTF"</span>, <span className="text-yellow-400">"systems security"</span>],{'\n'}
-            {'  '}<span className="text-green-400">systems</span>:  [<span className="text-yellow-400">"Rust"</span>, <span className="text-yellow-400">"OS internals"</span>, <span className="text-yellow-400">"infra at scale"</span>],{'\n'}
+            {'  '}<span className="text-green-400">agents</span>:   [<span className="text-yellow-400">"LLM evals"</span>, <span className="text-yellow-400">"agent benchmarking"</span>, <span className="text-yellow-400">"RL fine-tuning"</span>],{'\n'}
+            {'  '}<span className="text-green-400">security</span>: [<span className="text-yellow-400">"adversarial ML"</span>, <span className="text-yellow-400">"CTF"</span>, <span className="text-yellow-400">"Web3 security"</span>],{'\n'}
+            {'  '}<span className="text-green-400">systems</span>:  [<span className="text-yellow-400">"Rust"</span>, <span className="text-yellow-400">"OS kernels"</span>, <span className="text-yellow-400">"GPU clusters"</span>],{'\n'}
+            {'  '}<span className="text-green-400">infra</span>:    [<span className="text-yellow-400">"K8s"</span>, <span className="text-yellow-400">"vector DBs"</span>, <span className="text-yellow-400">"distributed systems"</span>],{'\n'}
             {'  '}<span className="text-green-400">thesis</span>:   <span className="text-yellow-400">"measure what agents can't do yet"</span>{'\n'}
             {'}'};
           </code>
@@ -206,7 +207,7 @@ export default function Home() {
           </p>
 
           <p className="text-gray-500 text-xs sm:text-sm max-w-xl mx-auto mb-6 sm:mb-8 px-4 text-center leading-relaxed">
-            SDR-Bench · CSAW ESC &apos;22 winner · WACV &amp; ECCV · Rust systems · IIT Roorkee
+            SDR-Bench · Memento · CSAW ESC &apos;22 winner · WACV &amp; ECCV · Rust systems · IIT Roorkee
           </p>
 
           <motion.div
@@ -252,7 +253,7 @@ export default function Home() {
 
       {/* Experience Section */}
       <ParallaxSection>
-        <section className="min-h-screen bg-black/50 backdrop-blur-sm py-24 px-4" id="experience">
+        <section className="bg-black/50 backdrop-blur-sm py-16 sm:py-24 px-4" id="experience">
           <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -297,21 +298,21 @@ export default function Home() {
                 role="Research Intern"
                 company="Trinity College Dublin"
                 period="Dec 2024 - Mar 2025"
-                description="Conducted research in machine learning and AI applications with the primary focus on interdisciplinary application of AI in Brain Tumor Detection"
+                description="Built RadBot — an automated brain tumor segmentation and survivability prediction system. Applied multimodal AI to medical imaging at the intersection of ML and clinical neuroscience."
                 delay={0.4}
               />
               <ExperienceCard
                 role="Infrastructure Engineer"
                 company="Abacus.AI"
                 period="Oct 2024 - Feb 2025"
-                description="Developed and maintained scalable infrastructure for AI/ML workloads, optimizing cloud systems and deployment pipelines."
+                description="Managed Kubernetes clusters and microservices across AWS and GCP. Built event-driven architectures with Kafka pipelines, Redis caching, and MySQL binlog processing for real-time data sync."
                 delay={0.6}
               />
               <ExperienceCard
                 role="Research Intern"
                 company="Adobe"
                 period="May 2024 - Jul 2024"
-                description="Conducted research in Diffusion based image editing. Developed a novel end-to-end framework for exemplar-based image editing - ReEdit."
+                description="Developed ReEdit — a novel end-to-end framework for exemplar-based image editing using diffusion models and VLMs. Published at WACV 2025 and ECCV 2024 AI4VA workshop."
                 delay={0.8}
               />
               <ExperienceCard
@@ -368,37 +369,49 @@ export default function Home() {
 
       {/* Expertise Section - Reorganized by Domains */}
       <ParallaxSection offset={-50}>
-        <section className="min-h-screen bg-black/50 backdrop-blur-sm py-24 px-4" id="expertise">
+        <section className="bg-black/50 backdrop-blur-sm py-16 sm:py-24 px-4" id="expertise">
           <div className="max-w-6xl mx-auto">
             <FadeInSection>
               <h2 className="text-3xl font-bold mb-3 gradient-text">~/expertise</h2>
               <p className="text-gray-400 mb-12">Multi-domain technical expertise across cutting-edge technologies</p>
             </FadeInSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {[
                 {
                   icon: <Cpu className="w-8 h-8" />,
-                  title: "AI Research & Evaluation",
-                  description: "Building and evaluating agentic AI systems. Research on LLM benchmarking, process rewards, and long-horizon agent reasoning. Published at WACV and ECCV.",
-                  tags: ["PyTorch", "TensorFlow", "Research"]
+                  title: "Agentic AI & Evaluation",
+                  description: "End-to-end architecture of multi-agent LLM systems. Pioneer of SDR-Arena and Memento benchmarks. Built RL fine-tuning pipelines on 10+8 x A100 GPU clusters with 1.5-3x inference speedups.",
+                  tags: ["PyTorch", "RL", "LLMs", "Benchmarking"]
+                },
+                {
+                  icon: <Brain className="w-8 h-8" />,
+                  title: "Multimodal & Vision-Language",
+                  description: "ReEdit (WACV/ECCV) for exemplar-based image editing with diffusion models. RadBot for brain tumor segmentation. Knowledge graphs via internet-scale scraping for LLM traversal.",
+                  tags: ["Diffusion", "VLMs", "Knowledge Graphs"]
                 },
                 {
                   icon: <Shield className="w-8 h-8" />,
                   title: "AI & Systems Security",
-                  description: "Adversarial ML research, CTF competitions, and security engineering. CSAW ESC winner. Led InfoSecIITR to rank #40 globally on CTFtime.",
-                  tags: ["AppSec", "CTF"]
+                  description: "CSAW ESC 1st place for adversarial ML. NEAR REDACTED 2024 CTF winner. Team Captain of InfoSecIITR (#4 India, #40 globally). GIAC/SANS certified.",
+                  tags: ["Adversarial ML", "CTF", "Web3 Security"]
                 },
                 {
                   icon: <Server className="w-8 h-8" />,
-                  title: "Infrastructure & DevOps",
-                  description: "Architecting scalable ML infrastructure on Kubernetes. Cloud-native systems, CI/CD pipelines, and infrastructure-as-code for AI/ML workloads.",
-                  tags: ["Kubernetes", "AWS", "Terraform"]
+                  title: "Infrastructure & Distributed Systems",
+                  description: "K8s microservices at Abacus.AI across AWS/GCP. Kafka/Redis/MySQL binlog pipelines. GPU orchestration for distributed RL training.",
+                  tags: ["Kubernetes", "Kafka", "GPU Clusters"]
                 },
                 {
                   icon: <Terminal className="w-8 h-8" />,
-                  title: "Blockchain (side projects)",
-                  description: "Smart contract development, zkVM systems (RISC-0), and AVS (Actively Validated Services). Experience with EigenLayer, zero-knowledge proofs, and decentralized consensus protocols.",
+                  title: "Low-Level Systems",
+                  description: "RusticOS — modular kernel in Rust with ring 0/3 separation and custom syscall interface. VortexDB — vector database engine with HNSW indexing and DistilBERT vectorizer.",
+                  tags: ["Rust", "OS Kernels", "Vector DBs"]
+                },
+                {
+                  icon: <Workflow className="w-8 h-8" />,
+                  title: "Blockchain & Web3",
+                  description: "EigenLayer Infinite Prize winner (ValidAI AVS). Proof of Optima using RISC-0 zkVM and Solidity. MCP servers and A2A frameworks for production SSE serving.",
                   tags: ["Solidity", "zkVM", "AVS"]
                 }
               ].map((item, index) => (
@@ -429,7 +442,7 @@ export default function Home() {
 
       {/* Projects Section */}
       <ParallaxSection offset={50}>
-        <section className="min-h-screen bg-black/50 backdrop-blur-sm py-24 px-4" id="projects">
+        <section className="bg-black/50 backdrop-blur-sm py-16 sm:py-24 px-4" id="projects">
           <div className="max-w-6xl mx-auto">
             <FadeInSection>
               <h2 className="text-3xl font-bold mb-3 gradient-text">~/projects</h2>
@@ -456,16 +469,23 @@ export default function Home() {
                   category: "OS Development"
                 },
                 {
-                  title: "VectorDB",
-                  description: "VectorDB is a high-performance vector database for storing and querying embeddings. Built for ML applications with efficient similarity search and HNSW indexing.",
-                  tech: ["Rust", "ML Infra"],
+                  title: "VortexDB",
+                  description: "High-performance vector database core engine built from scratch in Rust. Features HNSW vector indices, DistilBERT image vectorizer flows, and efficient similarity search for ML applications.",
+                  tech: ["Rust", "ML Infra", "HNSW"],
                   image: "/placeholder.jpg",
                   github: "https://github.com/sdslabs/vector-db",
                   category: "AI/ML"
                 },
                 {
+                  title: "RadBot",
+                  description: "Automated brain tumor segmentation and survivability prediction system. Applies multimodal AI to clinical neuroimaging for accurate diagnosis support.",
+                  tech: ["Python", "PyTorch", "Medical AI"],
+                  image: "/placeholder.jpg",
+                  category: "AI/ML"
+                },
+                {
                   title: "Katana CTF Platform",
-                  description: "Production-ready attack and defense CTF platform with automated infrastructure setup.",
+                  description: "Highly available K8s attack-defense CTF platform with strict namespace isolation, automated MongoDB/MySQL provisioning, and health-check cronjobs.",
                   tech: ["Go", "Kubernetes", "Docker"],
                   image: "/placeholder.jpg",
                   github: "https://github.com/sdslab/katana",

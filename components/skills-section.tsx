@@ -14,32 +14,32 @@ const skillCategories: SkillCategory[] = [
   {
     title: 'AI & Machine Learning',
     icon: <Cpu className="w-6 h-6" />,
-    skills: ['PyTorch', 'Diffusion Models', 'Transformers', 'LLMs', 'Computer Vision', 'NLP', 'MLOps', 'Agentic AI'],
+    skills: ['PyTorch', 'Diffusion Models', 'Transformers', 'LLMs', 'RL Fine-tuning', 'Computer Vision', 'NLP', 'MLOps', 'Agentic AI', 'Knowledge Graphs'],
     color: 'purple'
   },
   {
     title: 'Security & CTF',
     icon: <Shield className="w-6 h-6" />,
-    skills: ['Web AppSec', 'Penetration Testing', 'CTFs'],
+    skills: ['Adversarial ML', 'Web AppSec', 'Penetration Testing', 'CTFs', 'Web3 Security'],
     color: 'red'
   },
   {
     title: 'Infrastructure & DevOps',
     icon: <Server className="w-6 h-6" />,
-    skills: ['Kubernetes', 'Docker', 'AWS', 'GCP', 'Terraform', 'CI/CD', 'Monitoring', 'Linux'],
+    skills: ['Kubernetes', 'Docker', 'AWS', 'GCP', 'Kafka', 'Redis', 'Terraform', 'CI/CD', 'GPU Orchestration'],
     color: 'blue'
   },
   {
     title: 'Blockchain & Web3',
     icon: <Blocks className="w-6 h-6" />,
-    skills: ['Smart Contracts', 'Solidity', 'zkVM', 'AVS'],
+    skills: ['Smart Contracts', 'Solidity', 'zkVM', 'RISC-0', 'AVS', 'EigenLayer'],
     color: 'green'
   }
 ]
 
 const languagesAndTools = [
-  'Python', 'Rust', 'Go', 'C/C++', 
-  'SQL', 'Git', 'Linux'
+  'Python', 'Rust', 'Go', 'C/C++', 'TypeScript',
+  'SQL', 'Git', 'Linux', 'Azure Foundry', 'MCP Servers'
 ]
 
 const colorMap: Record<string, { border: string; text: string; bg: string }> = {
@@ -51,7 +51,7 @@ const colorMap: Record<string, { border: string; text: string; bg: string }> = {
 
 export function SkillsSection() {
   return (
-    <section className="min-h-screen bg-black/50 backdrop-blur-sm py-24 px-4" id="skills">
+    <section className="bg-black/50 backdrop-blur-sm py-16 sm:py-24 px-4" id="skills">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

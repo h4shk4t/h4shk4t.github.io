@@ -39,7 +39,7 @@ const contactLinks: ContactLink[] = [
 
 export function ContactSection() {
   return (
-    <section className="min-h-screen bg-black/50 backdrop-blur-sm py-24 px-4" id="contact">
+    <section className="bg-black/50 backdrop-blur-sm py-16 sm:py-24 px-4" id="contact">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

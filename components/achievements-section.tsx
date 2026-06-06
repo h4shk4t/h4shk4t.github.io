@@ -17,29 +17,45 @@ const achievements: Achievement[] = [
   {
     title: 'CSAW ESC 2022 — 1st Place, Research Track',
     subtitle: 'World\'s oldest hardware security competition · Adversarial attacks on ML models',
-    description: 'Won the Embedded Security Challenge research track for work on adversarial attacks against machine learning models — before AI security became a mainstream research area. CSAW ESC is run by NYU and is the world\'s oldest hardware security competition.',
+    description: 'Won the Embedded Security Challenge research track at NYU for adversarial attacks against machine learning models — before AI security became a mainstream research area.',
     icon: <Trophy className="w-6 h-6 sm:w-8 sm:h-8" />,
     link: 'https://github.com/h4shk4t/csaw_esc_2022',
     year: '2022',
     color: 'yellow'
   },
   {
+    title: 'NEAR REDACTED 2024 — 1st Prize',
+    subtitle: 'Web3 security CTF competition · Bangkok',
+    description: 'Won 1st Prize at the NEAR REDACTED 2024 CTF in Bangkok, demonstrating expertise in Web3 security, smart contract vulnerabilities, and blockchain exploitation.',
+    icon: <Trophy className="w-6 h-6 sm:w-8 sm:h-8" />,
+    year: '2024',
+    color: 'yellow'
+  },
+  {
     title: 'EigenLayer Infinite Prize',
-    subtitle: 'ValidAI - AVS Development',
-    description: 'Won the EigenLayer Infinite Prize for ValidAI, an Actively Validated Service (AVS) leveraging EigenLayer\'s restaking infrastructure for decentralized AI validation.',
+    subtitle: 'ValidAI — Decentralized AI validation via AVS',
+    description: 'Won the EigenLayer Infinite Hackathon for ValidAI, an Actively Validated Service (AVS) leveraging EigenLayer\'s restaking infrastructure for decentralized AI model verification.',
     icon: <Zap className="w-6 h-6 sm:w-8 sm:h-8" />,
-    link: 'https://github.com/h4shk4t',
+    link: 'https://github.com/h4shk4t/validAI',
     year: '2024',
     color: 'purple'
   },
   {
-    title: 'CTF Global Rankings',
-    subtitle: 'InfoSecIITR Team',
-    description: 'Led InfoSecIITR to rank #40 globally and #4 in India on CTFtime, competing in international cybersecurity capture-the-flag competitions.',
+    title: 'CTF Global Rankings — Team Captain',
+    subtitle: 'InfoSecIITR · Ranked #4 in India, #40 globally',
+    description: 'Led InfoSecIITR as Team Captain to rank #40 globally and #4 in India on CTFtime. Built and managed infrastructure for BackdoorCTF and Hackentine competitions.',
     icon: <Target className="w-6 h-6 sm:w-8 sm:h-8" />,
     link: 'https://ctftime.org/team/16691/',
     year: '2022-2025',
     color: 'blue'
+  },
+  {
+    title: 'GIAC Foundational Cybersecurity Technologies',
+    subtitle: 'SANS Foundation · GFACT Certification',
+    description: 'Holds the GIAC Foundational Cybersecurity Technologies (GFACT) certification from the SANS Foundation, validating core cybersecurity knowledge.',
+    icon: <Award className="w-6 h-6 sm:w-8 sm:h-8" />,
+    year: '2023',
+    color: 'green'
   }
 ]
 

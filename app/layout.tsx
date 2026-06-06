@@ -1,7 +1,7 @@
 import './globals.css'
 import { JetBrains_Mono } from 'next/font/google'
 import Link from 'next/link'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { MobileMenu } from '../components/mobile-menu'
 
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'] })
@@ -12,18 +12,19 @@ const siteName = 'Ashutosh Srivastava — LLM Evals & AI Security Research'
 const siteDescription = 'Research engineer at Adobe working on LLM agent evaluation, benchmarking, and AI security. Published at WACV and ECCV. CSAW ESC Winner.'
 const defaultOgImage = '/placeholder.jpg'
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  applicationName: 'Tech Portfolio',
-  generator: 'v0.dev',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-  },
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
     { media: '(prefers-color-scheme: dark)', color: '#000000' },
   ],
+}
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  applicationName: 'Tech Portfolio',
+  generator: 'v0.dev',
   title: {
     default: siteName,
     template: '%s | h4shk4t',
