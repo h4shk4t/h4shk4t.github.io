@@ -107,7 +107,7 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.webmanifest',
   verification: {
-    google: '2uUuzLie4YzbJLzBdqrUxIi89D11_l4LElFXeM6v9YU',
+    google: '9f488cf2d3e04bbf',
   },
 }
 
