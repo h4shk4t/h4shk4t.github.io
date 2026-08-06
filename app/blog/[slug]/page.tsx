@@ -5,10 +5,12 @@ import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
 import html from 'remark-html'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
 export async function generateStaticParams() {
   const postsDirectory = path.join(process.cwd(), 'posts')
+  if (!fs.existsSync(postsDirectory)) return []
   const fileNames = fs.readdirSync(postsDirectory)
 
   return fileNames
@@ -26,6 +28,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
   const fullPath = path.join(process.cwd(), 'posts', `${slug}.md`)
+  if (!fs.existsSync(fullPath)) return {}
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data } = matter(fileContents)
   const title = (data?.title as string) || slug
@@ -54,6 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const fullPath = path.join(process.cwd(), 'posts', `${slug}.md`)
+  if (!fs.existsSync(fullPath)) notFound()
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
   
