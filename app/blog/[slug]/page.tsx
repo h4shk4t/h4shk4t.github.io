@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
+import remarkGfm from 'remark-gfm'
 import html from 'remark-html'
 import Link from 'next/link'
 import type { Metadata } from 'next'
@@ -57,7 +58,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const { data, content } = matter(fileContents)
   
   const processedContent = await remark()
-    .use(html)
+    .use(remarkGfm)
+    .use(html, { sanitize: false })
     .process(content)
   const contentHtml = processedContent.toString()
 

@@ -452,6 +452,15 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {[
                 {
+                  title: "Havoc Explorer",
+                  description: "A semantic knowledge graph of 611 real vulnerabilities across 15 families (3,508 raw artifacts) capturing vulnerability mechanisms as directed paths. Features interactive visualizer and graph-guided LLM evaluation.",
+                  tech: ["Knowledge Graph", "AI Security", "LLM Evals", "Python"],
+                  image: "/screenshot-2026-08-06-at-10.40.29-pm.png",
+                  link: "/blog/havoc-explorer",
+                  category: "AI Security",
+                  featured: true
+                },
+                {
                   title: "SDR-Bench",
                   description: "The first framework to systematically benchmark generative personalization capabilities of LLMs for B2B sales. Features a dual-layered dataset spanning 6,279 articles across 20+ industries.",
                   tech: ["Python", "LLMs", "NLP"],
