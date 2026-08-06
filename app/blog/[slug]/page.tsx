@@ -70,13 +70,26 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   return (
     <div className="min-h-screen bg-black/50 backdrop-blur-sm py-24 px-4">
       <article className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-4 gradient-text">
-          {data.titleUrl ? (
-            <a href={data.titleUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
+        <h1 className="text-4xl font-bold mb-4">
+          {data.titleUrl && data.titleLinkText && data.title.includes(data.titleLinkText) ? (
+            <>
+              {data.title.split(data.titleLinkText)[0]}
+              <a 
+                href={data.titleUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-green-400 hover:text-green-300 hover:underline transition-colors"
+              >
+                {data.titleLinkText}
+              </a>
+              {data.title.split(data.titleLinkText).slice(1).join(data.titleLinkText)}
+            </>
+          ) : data.titleUrl ? (
+            <a href={data.titleUrl} target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 hover:underline transition-colors">
               {data.title}
             </a>
           ) : (
-            data.title
+            <span className="gradient-text">{data.title}</span>
           )}
         </h1>
         <div className="text-gray-400 mb-8">

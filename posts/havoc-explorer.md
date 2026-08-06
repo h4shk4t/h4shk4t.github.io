@@ -1,6 +1,7 @@
 ---
 title: 'Havoc Explorer: A Semantic Knowledge Graph of Vulnerabilities'
 titleUrl: 'https://h4shk4t.github.io/havoc-explorer/visualizer.html?id=0'
+titleLinkText: 'Havoc Explorer'
 date: '2026-08-07'
 author: 'h4shk4t'
 excerpt: "Havoc explorer is a semantic knowledge graph of 611 real vulnerabilities from 11 source classes that captures each bug's mechanism as a directed path."
