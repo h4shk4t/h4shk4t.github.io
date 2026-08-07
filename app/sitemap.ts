@@ -8,13 +8,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://h4shk4t.github.io'
 
   const routes: MetadataRoute.Sitemap = [
-    '',
+    '/',
     '/blog',
   ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
+    url: route === '/' ? `${baseUrl}/` : `${baseUrl}${route}`,
+    lastModified: new Date().toISOString().split('T')[0],
     changeFrequency: 'weekly',
-    priority: route === '' ? 1 : 0.6,
+    priority: route === '/' ? 1.0 : 0.8,
   }))
 
   // Include blog posts
@@ -25,9 +25,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const slug = fileName.replace(/\.md$/, '')
       routes.push({
         url: `${baseUrl}/blog/${slug}`,
-        lastModified: new Date(),
+        lastModified: new Date().toISOString().split('T')[0],
         changeFrequency: 'monthly',
-        priority: 0.5,
+        priority: 0.6,
       })
     }
   } catch (e) {
