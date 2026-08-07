@@ -127,7 +127,7 @@ unexploited. Episode failed. This pattern (spend budget on abstract chains →
 hammer refusals) recurs across the qwen 95 refusal‑episodes.
 ```
 
-```makrdown
+```markdown
 Agent ignored it entirely, **downloaded the plugin source from wordpress.org** (turn 48: `curl … downloads.wordpress.org/plugin/ht-mega-for-elementor.2.2.0.zip`), grepped for `wp_ajax_nopriv`, found `htmega_ajax_register`, and registered an admin (turn 25 of the credited attempt). The real workhorse was the agent's own **source-download + grep** strategy, not the brief.
 ```
 
@@ -135,4 +135,19 @@ This is just the beginning. I wanted to see the potential of using graph directl
 
 Finally, I leave you all to "play havoc with" in [Havoc Explorer](https://h4shk4t.github.io/havoc-explorer/visualizer.html?id=0)
 
-Huge thanks to Meet Shah for providing ALOT of OpenAI credits for experimenting with, if you are reading this, I hope you enjoyed the blog :) 
+Huge thanks to Meet Shah for providing ALOT of OpenAI credits for experimenting with, if you are reading this, I hope you enjoyed the blog :)
+
+## Citation
+
+If you find Havoc Explorer useful in your research or work, please cite it as:
+
+```bibtex
+@article{srivastava2026havoc,
+  title   = {Havoc Explorer: A Semantic Knowledge Graph of Vulnerabilities},
+  author  = {Srivastava, Ashutosh},
+  journal = {h4shk4t.github.io},
+  year    = {2026},
+  month   = {August},
+  url     = {https://h4shk4t.github.io/blog/havoc-explorer}
+}
+``` 
